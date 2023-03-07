@@ -23,3 +23,6 @@ vim.g.header_auto_update_header = 1
 
 --for bufferline
 vim.opt.termguicolors = true
+
+-- for autopep8
+vim.g.autopep8_diff_type = "vertical"
