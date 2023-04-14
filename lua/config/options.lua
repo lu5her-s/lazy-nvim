@@ -26,3 +26,7 @@ vim.opt.termguicolors = true
 
 -- for autopep8
 vim.g.autopep8_diff_type = "vertical"
+
+-- vim.g.airline_section_y = '{…}%3{codeium#GetStatusString()}'
+-- vim.g.airline_section_y = '%3{codeium#GetStatusString()}'
+-- vim.g.statusline = "%3{codeium#GetStatusString()}"
