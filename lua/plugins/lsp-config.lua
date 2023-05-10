@@ -19,7 +19,23 @@ return {
       ---@type lspconfig.options
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
-        -- pyright = {},
+        pyright = {
+          python = {
+            analysis = {
+              autoSearchPaths = true,
+              diagnosticMode = "workspace",
+              useLibraryCodeForTypes = true,
+            },
+          },
+        },
+        -- pylsp = {
+        --   plugins = {
+        --     pycodestyle = {
+        --       ignore = { "W391" },
+        --       maxLineLength = 100,
+        --     },
+        --   },
+        -- },
       },
     },
   },
