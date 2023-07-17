@@ -46,6 +46,9 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- neotree reveal
+-- vim.cmd([[nnoremap <leader>n :Neotree reveal<CR>]])
+
 -- loaded my .vim
 vim.cmd("source ~/.config/nvim/autoclose.vim")
 vim.cmd("source ~/.config/nvim/whitespace.vim")
