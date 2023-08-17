@@ -7,11 +7,11 @@ return {
   config = function()
     require("codegpt.config")
   end,
-  keys = {
-    {
-      "<C-c>",
-      ":Chat",
-      desc = "CodeGpt",
-    },
-  },
+  -- keys = {
+  --   {
+  --     "<C-c>",
+  --     ":Chat",
+  --     desc = "CodeGpt",
+  --   },
+  -- },
 }
