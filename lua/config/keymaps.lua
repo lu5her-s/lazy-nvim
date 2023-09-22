@@ -5,6 +5,7 @@
 vim.keymap.set("n", "<f5>", ":e<cr>")
 vim.keymap.set("n", "zz", "i<c-m><esc>")
 vim.keymap.set("n", "<c-l>", ":noh <cr>")
+vim.keymap.set("n", "<leader>fd", ":TodoTelescope<cr>", { desc = "Todo Telescope" })
 
 if vim.fn.executable("gitui") == 1 then
   -- gitui instead of lazygit
