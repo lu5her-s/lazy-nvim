@@ -33,3 +33,5 @@ vim.g.autopep8_diff_type = "vertical"
 
 -- vim.g["codegpt_openai_api_key"] = "dEXMiu282AKk6PZO5JvJvpGXMjrqflV_YzTQ9yX1DdY"
 -- vim.g["codegpt_chat_completions_url"] = "https://chimeragpt.adventblocks.cc/api/v1/chat/completions"
+
+-- lazyvim.plugins.extras.ui.alpha

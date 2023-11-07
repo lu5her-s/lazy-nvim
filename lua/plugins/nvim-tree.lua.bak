@@ -7,9 +7,10 @@ return {
       desc = "Browse Files",
     },
   },
+  requires = "nvim-tree/nvim-web-devicons",
   config = function()
     require("nvim-tree").setup({
-      sort_by = "modification_time",
+      sort_by = "modification_time",  requires
       diagnostics = {
         enable = false,
         icons = { hint = "", info = "", warning = "", error = "" },
