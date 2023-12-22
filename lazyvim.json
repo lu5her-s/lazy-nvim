@@ -2,7 +2,8 @@
   "extras": [
     "lazyvim.plugins.extras.editor.aerial",
     "lazyvim.plugins.extras.editor.leap",
-    "lazyvim.plugins.extras.editor.symbols-outline"
+    "lazyvim.plugins.extras.editor.symbols-outline",
+    "lazyvim.plugins.extras.ui.alpha"
   ],
   "news": {
     "NEWS.md": "2123"

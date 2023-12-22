@@ -32,6 +32,20 @@ vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR
 -- vim.api.nvim_set_keymap("n", "<Leader>nc", ":lua require('neogen').generate({ type = 'class' })<CR>", opts)
 -- vim.api.nvim_set_keymap("n", "<Leader>nt", ":lua require('neogen').generate({ type = 'type' })<CR>", opts)
 
+-- BufferLine
+vim.keymap.set(
+  "n",
+  "<Tab>",
+  ":BufferLineCycleNext<CR>",
+  { noremap = true, silent = true, remap = true, desc = "BufferLineCycleNext" }
+)
+vim.keymap.set(
+  "n",
+  "<S-Tab>",
+  ":BufferLineCyclePrev<CR>",
+  { noremap = true, silent = true, remap = true, desc = "BufferLineCyclePrev" }
+)
+
 -- for chatgpt
 
 -- load Which-key
