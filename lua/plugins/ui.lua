@@ -13,11 +13,14 @@ return {
   -- bufferline
   {
     "akinsho/bufferline.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
     opts = {
       options = {
         numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
-        close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
-        right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
+        close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
+        right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
         max_name_length = 30,
         max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
         show_buffer_icons = true,
@@ -66,7 +69,8 @@ return {
 
     local function lsp_name(msg)
       msg = msg or "Inactive"
-      local buf_clients = vim.lsp.buf_get_clients()
+      -- local buf_clients = vim.lsp.buf_get_clients()
+      local buf_clients = vim.lsp.get_active_clients()
       if next(buf_clients) == nil then
         if type(msg) == "boolean" or #msg == 0 then
           return "Inactive"
@@ -124,92 +128,92 @@ return {
   -- }),
 
   -- dashboard
-  {
-    "goolord/alpha-nvim",
-    opts = function(_, opts)
-      local dashboard = require("alpha.themes.dashboard")
-      --      local logo = [[
-      -- ███╗   ██╗ ███████╗  ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗
-      -- ████╗  ██║ ██╔════╝ ██╔═══██╗ ██║   ██║ ██║ ████╗ ████║
-      -- ██╔██╗ ██║ █████╗   ██║   ██║ ██║   ██║ ██║ ██╔████╔██║
-      -- ██║╚██╗██║ ██╔══╝   ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║
-      -- ██║ ╚████║ ███████╗ ╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║
-      -- ╚═╝  ╚═══╝ ╚══════╝  ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝
-      --      ]]
-      --       local logo = [[
-      -- ██╗░░░░░██╗░░░██╗███████╗██╗░░██╗███████╗██████╗░
-      -- ██║░░░░░██║░░░██║██╔════╝██║░░██║██╔════╝██╔══██╗
-      -- ██║░░░░░██║░░░██║██████╗░███████║█████╗░░██████╔╝
-      -- ██║░░░░░██║░░░██║╚════██╗██╔══██║██╔══╝░░██╔══██╗
-      -- ███████╗╚██████╔╝██████╔╝██║░░██║███████╗██║░░██║
-      -- ╚══════╝░╚═════╝░╚═════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝
-      --       ]]
-      --       local logo = [[
-      --
-      --  ________     ___    ___ ________  ________
-      -- |\   __  \   |\  \  /  /|\   __  \|\   __  \
-      -- \ \  \|\  \  \ \  \/  / | \  \|\  \ \  \|\  \
-      --  \ \  \\\  \  \ \    / / \ \  \\\  \ \  \\\  \
-      --   \ \  \\\  \  /     \/   \ \  \\\  \ \  \\\  \
-      --    \ \_______\/  /\   \    \ \_______\ \_______\
-      --     \|_______/__/ /\ __\    \|_______|\|_______|
-      --              |__|/ \|__|
-      --
-      --
-      --
-      --       ]]
-      local logo = [[
-      
- ██████╗ ██╗  ██╗ ██████╗  ██████╗ 
-██╔═████╗╚██╗██╔╝██╔═████╗██╔═████╗
-██║██╔██║ ╚███╔╝ ██║██╔██║██║██╔██║
-████╔╝██║ ██╔██╗ ████╔╝██║████╔╝██║
-╚██████╔╝██╔╝ ██╗╚██████╔╝╚██████╔╝
- ╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ 
-                                   
-      ]]
-      opts.section.header.val = vim.split(logo, "\n")
-      opts.section.header.opts.hl = "DashboardHeader"
-      opts.section.buttons.val = {
-        dashboard.button("p", " " .. "Open project", "<cmd>Telescope project display_type=full<cr>"),
-        dashboard.button("e", " " .. "New file", "<cmd>ene <BAR> startinsert<cr>"),
-        dashboard.button("f", " " .. "Find file", "<cmd>cd $HOME/Projects | Telescope find_files<cr>"),
-        dashboard.button("r", " " .. "Recent files", "<CMD>Telescope oldfiles<cr>"),
-        dashboard.button("s", "勒" .. "Restore Session", [[:lua require("persistence").load() <cr>]]),
-        dashboard.button("c", " " .. "Config", ":e $MYVIMRC | :cd %:p:h | Telescope file_browser<cr>"),
-        dashboard.button("l", "鈴" .. "Lazy", "<cmd>Lazy<cr>"),
-        dashboard.button("m", " " .. "Mason", "<cmd>Mason<cr>"),
-        dashboard.button("q", " " .. "Quit", "<cmd>qa<cr>"),
-      }
-      local function footer()
-        local datetime = os.date("%d-%m-%Y %H:%M:%S")
-        local version = vim.version()
-        local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
-        local quote1 = " Make it work, make it right, make it fast. "
-        local quote2 = " Make your world with your hands. "
-        return quote1 .. quote2 .. nvim_version_info .. "  " .. datetime
-      end
-
-      -- add footer
-      opts.section.footer.val = footer()
-      opts.config.opts.setup = function()
-        vim.api.nvim_create_autocmd("User", {
-          pattern = "AlphaReady",
-          desc = "disable tabline for alpha",
-          callback = function()
-            vim.opt.showtabline = 0
-          end,
-        })
-        vim.api.nvim_create_autocmd("BufUnload", {
-          buffer = 0,
-          desc = "enable tabline after alpha",
-          callback = function()
-            vim.opt.showtabline = 2
-          end,
-        })
-      end
-    end,
-  },
+  --   {
+  --     "goolord/alpha-nvim",
+  --     opts = function(_, opts)
+  --       local dashboard = require("alpha.themes.dashboard")
+  --       --      local logo = [[
+  --       -- ███╗   ██╗ ███████╗  ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗
+  --       -- ████╗  ██║ ██╔════╝ ██╔═══██╗ ██║   ██║ ██║ ████╗ ████║
+  --       -- ██╔██╗ ██║ █████╗   ██║   ██║ ██║   ██║ ██║ ██╔████╔██║
+  --       -- ██║╚██╗██║ ██╔══╝   ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║
+  --       -- ██║ ╚████║ ███████╗ ╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║
+  --       -- ╚═╝  ╚═══╝ ╚══════╝  ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝
+  --       --      ]]
+  --       --       local logo = [[
+  --       -- ██╗░░░░░██╗░░░██╗███████╗██╗░░██╗███████╗██████╗░
+  --       -- ██║░░░░░██║░░░██║██╔════╝██║░░██║██╔════╝██╔══██╗
+  --       -- ██║░░░░░██║░░░██║██████╗░███████║█████╗░░██████╔╝
+  --       -- ██║░░░░░██║░░░██║╚════██╗██╔══██║██╔══╝░░██╔══██╗
+  --       -- ███████╗╚██████╔╝██████╔╝██║░░██║███████╗██║░░██║
+  --       -- ╚══════╝░╚═════╝░╚═════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝
+  --       --       ]]
+  --       --       local logo = [[
+  --       --
+  --       --  ________     ___    ___ ________  ________
+  --       -- |\   __  \   |\  \  /  /|\   __  \|\   __  \
+  --       -- \ \  \|\  \  \ \  \/  / | \  \|\  \ \  \|\  \
+  --       --  \ \  \\\  \  \ \    / / \ \  \\\  \ \  \\\  \
+  --       --   \ \  \\\  \  /     \/   \ \  \\\  \ \  \\\  \
+  --       --    \ \_______\/  /\   \    \ \_______\ \_______\
+  --       --     \|_______/__/ /\ __\    \|_______|\|_______|
+  --       --              |__|/ \|__|
+  --       --
+  --       --
+  --       --
+  --       --       ]]
+  --       local logo = [[
+  --
+  --  ██████╗ ██╗  ██╗ ██████╗  ██████╗
+  -- ██╔═████╗╚██╗██╔╝██╔═████╗██╔═████╗
+  -- ██║██╔██║ ╚███╔╝ ██║██╔██║██║██╔██║
+  -- ████╔╝██║ ██╔██╗ ████╔╝██║████╔╝██║
+  -- ╚██████╔╝██╔╝ ██╗╚██████╔╝╚██████╔╝
+  --  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝
+  --
+  --       ]]
+  --       opts.section.header.val = vim.split(logo, "\n")
+  --       opts.section.header.opts.hl = "DashboardHeader"
+  --       opts.section.buttons.val = {
+  --         dashboard.button("p", " " .. "Open project", "<cmd>Telescope project display_type=full<cr>"),
+  --         dashboard.button("e", " " .. "New file", "<cmd>ene <BAR> startinsert<cr>"),
+  --         dashboard.button("f", " " .. "Find file", "<cmd>cd $HOME/Projects | Telescope find_files<cr>"),
+  --         dashboard.button("r", " " .. "Recent files", "<CMD>Telescope oldfiles<cr>"),
+  --         dashboard.button("s", "勒" .. "Restore Session", [[:lua require("persistence").load() <cr>]]),
+  --         dashboard.button("c", " " .. "Config", ":e $MYVIMRC | :cd %:p:h | Telescope file_browser<cr>"),
+  --         dashboard.button("l", "鈴" .. "Lazy", "<cmd>Lazy<cr>"),
+  --         dashboard.button("m", " " .. "Mason", "<cmd>Mason<cr>"),
+  --         dashboard.button("q", " " .. "Quit", "<cmd>qa<cr>"),
+  --       }
+  --       local function footer()
+  --         local datetime = os.date("%d-%m-%Y %H:%M:%S")
+  --         local version = vim.version()
+  --         local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
+  --         local quote1 = " Make it work, make it right, make it fast. "
+  --         local quote2 = " Make your world with your hands. "
+  --         return quote1 .. quote2 .. nvim_version_info .. "  " .. datetime
+  --       end
+  --
+  --       -- add footer
+  --       opts.section.footer.val = footer()
+  --       opts.config.opts.setup = function()
+  --         vim.api.nvim_create_autocmd("User", {
+  --           pattern = "AlphaReady",
+  --           desc = "disable tabline for alpha",
+  --           callback = function()
+  --             vim.opt.showtabline = 0
+  --           end,
+  --         })
+  --         vim.api.nvim_create_autocmd("BufUnload", {
+  --           buffer = 0,
+  --           desc = "enable tabline after alpha",
+  --           callback = function()
+  --             vim.opt.showtabline = 2
+  --           end,
+  --         })
+  --       end
+  --     end,
+  --   },
 
   -- scrollbar for Neovim
   {
