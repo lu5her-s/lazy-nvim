@@ -35,3 +35,6 @@ vim.g.autopep8_diff_type = "vertical"
 -- vim.g["codegpt_chat_completions_url"] = "https://chimeragpt.adventblocks.cc/api/v1/chat/completions"
 
 -- lazyvim.plugins.extras.ui.alpha
+
+-- emmet remapkey
+vim.g.user_emmet_leader_key = "<C-e>"

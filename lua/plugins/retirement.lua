@@ -25,6 +25,6 @@ return {
     ignoreVisibleBufs = true,
 
     -- uses vim.notify for plugins like nvim-notify
-    notificationOnAutoClose = false,
+    notificationOnAutoClose = true,
   },
 }
