@@ -1,3 +1,11 @@
+--[[--
+File              : keymaps.lua
+Author            : lu5her <lu5her@mail>
+Date              : Tue Jan, 23 2024, 14:03 023
+Last Modified Date: Tue Jan, 23 2024, 14:03 023
+Last Modified By  : lu5her <lu5her@mail>
+--]]
+--
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
@@ -31,6 +39,9 @@ local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", opts)
 -- vim.api.nvim_set_keymap("n", "<Leader>nc", ":lua require('neogen').generate({ type = 'class' })<CR>", opts)
 -- vim.api.nvim_set_keymap("n", "<Leader>nt", ":lua require('neogen').generate({ type = 'type' })<CR>", opts)
+
+-- keymap for external command djlint % --reformat
+vim.keymap.set("n", "<leader>dj", ":!djlint % --reformat<CR>")
 
 -- BufferLine
 vim.keymap.set(
