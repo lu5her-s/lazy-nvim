@@ -38,3 +38,6 @@ vim.g.autopep8_diff_type = "vertical"
 
 -- emmet remapkey
 vim.g.user_emmet_leader_key = "<C-e>"
+
+-- set autochdir
+vim.opt.autochdir = true
