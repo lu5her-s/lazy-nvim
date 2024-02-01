@@ -50,12 +50,12 @@ vim.keymap.set(
   ":BufferLineCycleNext<CR>",
   { noremap = true, silent = true, remap = true, desc = "BufferLineCycleNext" }
 )
-vim.keymap.set(
-  "n",
-  "<S-Tab>",
-  ":BufferLineCyclePrev<CR>",
-  { noremap = true, silent = true, remap = true, desc = "BufferLineCyclePrev" }
-)
+-- vim.keymap.set(
+--   "n",
+--   "<S-Tab>",
+--   ":BufferLineCyclePrev<CR>",
+--   { noremap = true, silent = true, remap = true, desc = "BufferLineCyclePrev" }
+-- )
 
 -- for chatgpt
 
