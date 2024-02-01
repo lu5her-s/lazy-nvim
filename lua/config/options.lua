@@ -41,3 +41,13 @@ vim.g.user_emmet_leader_key = "<C-e>"
 
 -- set autochdir
 vim.opt.autochdir = true
+
+-- set path to loaded_python3_provider
+vim.g.python3_host_prog = "/usr/bin/python3"
+-- vim.g.python_host_prog = "/usr/bin/python"
+-- vim.g.providers.loaded_python3_provider = 1
+vim.g.loaded_python3_provider = nil
+-- vim.g.loaded_python_provider = 1
+-- vim.g.loaded_ruby_provider = 1
+-- vim.g.loaded_node_provider = 1
+-- vim.g.loaded_perl_provider = 1
