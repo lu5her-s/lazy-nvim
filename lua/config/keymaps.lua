@@ -157,3 +157,6 @@ require("which-key").register({
   noremap = true,
   nowait = true,
 })
+
+-- keymap for GeminiChat
+vim.keymap.set("n", "<leader>gm", "<cmd>GeminiChat<cr>", { desc = "GeminiChat" })
