@@ -54,8 +54,16 @@ return {
       -- wrap = "overflow";
     }
 
-    local function footer()
-      return "Make your world with your hands!"
+    -- local function footer()
+    --   return "Make your world with your hands!"
+    -- end
+    -- dashboard.nvim reference
+    footer = function()
+      local info = {}
+      local fortune = require("fortune").get_fortune()
+      info[1] = "  Neovim loaded " .. vim.fn.strftime("%H:%M") .. " on " .. vim.fn.strftime("%d/%m/%Y") .. " "
+      local footer = vim.list_extend(info, fortune)
+      return footer
     end
 
     dashboard.section.footer.val = footer()
