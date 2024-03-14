@@ -160,3 +160,6 @@ require("which-key").register({
 
 -- keymap for GeminiChat
 vim.keymap.set("n", "<leader>gm", "<cmd>GeminiChat<cr>", { desc = "GeminiChat" })
+
+-- keymap for Telescope import
+vim.keymap.set("n", "<leader>ti", "<cmd>Telescope import<cr>", { desc = "Telescope import" })
