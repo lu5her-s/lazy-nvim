@@ -53,3 +53,14 @@ vim.api.nvim_create_autocmd("FileType", {
 -- loaded my .vim
 vim.cmd("source ~/.config/nvim/autoclose.vim")
 vim.cmd("source ~/.config/nvim/whitespace.vim")
+
+vim.lsp.buf.formatting = {
+  format_opts = {
+    async = true,
+    timeout_ms = 10000,
+  },
+  filter = function(client)
+    -- apply whatever logic you want (in this example, we'll only use null-ls)
+    return client.name == "null-ls"
+  end,
+}

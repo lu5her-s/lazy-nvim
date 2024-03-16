@@ -5,4 +5,8 @@ return {
   config = function()
     require("telescope").load_extension("import")
   end,
+
+  keys = {
+    { "<leader>fi", "<cmd>Import<cr>", desc = "Import" },
+  },
 }
