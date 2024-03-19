@@ -9,7 +9,6 @@ vim.cmd([[
     autocmd FileType htmldjango inoremap {{ {{  }}<left><left><left>
     autocmd FileType htmldjango inoremap {% {%  %}<left><left><left>
     autocmd FileType htmldjango inoremap {# {#  #}<left><left><left>
-    autocmd FileType html,css,xml,js {{ {{ }}<left><left><left>
   augroup END
 ]])
 
