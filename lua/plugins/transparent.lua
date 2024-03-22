@@ -4,7 +4,7 @@ return {
     {
       "<F6>",
       ":TransparentToggle<cr>",
-      desc = "Browse Files",
+      desc = "Toggle transparent background",
     },
   },
   config = function()
