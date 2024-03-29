@@ -61,7 +61,7 @@ return {
     footer = function()
       local info = {}
       local fortune = require("fortune").get_fortune()
-      info[1] = "  Neovim loaded " .. vim.fn.strftime("%H:%M") .. " on " .. vim.fn.strftime("%d/%m/%Y") .. " "
+      info[1] = "  Neovim loaded " .. vim.fn.strftime("%H:%M") .. " on " .. vim.fn.strftime("%a %d, %b %y") .. " "
       local footer = vim.list_extend(info, fortune)
       return footer
     end

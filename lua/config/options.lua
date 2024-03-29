@@ -1,6 +1,11 @@
+--
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
+
+-- Replace mapleader to \
+vim.g.mapleader = "\\"
+vim.g.maplocalleader = "\\"
 
 -- disable some extension providers
 vim.g.loaded_python3_provider = 0
@@ -20,6 +25,7 @@ vim.g.header_field_author = "lu5her"
 vim.g.header_field_author_email = "lu5her@mail"
 vim.g.header_field_timestamp_format = "%a %b, %d %Y, %H:%M %j"
 vim.g.header_auto_update_header = 1
+vim.g.header_field_last_separator = 1
 
 --for bufferline
 vim.opt.termguicolors = true
