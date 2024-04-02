@@ -60,3 +60,10 @@ vim.g.loaded_python3_provider = nil
 
 -- set showcmd in normal mode
 vim.opt.showcmd = true
+
+-- tagbar options
+vim.g.tagbar_autofocus = 1
+vim.g.tagbar_sort = 0
+vim.g.tagbar_show_line_numbers = 2
+vim.g.tagbar_show_tag_linenumbers = 2
+-- vim.g.tagbar_iconchars = { "▸", "▾" }
