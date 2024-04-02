@@ -64,6 +64,7 @@ vim.opt.showcmd = true
 -- tagbar options
 vim.g.tagbar_autofocus = 1
 vim.g.tagbar_sort = 0
-vim.g.tagbar_show_line_numbers = 2
+-- vim.g.tagbar_show_line_numbers = 1
 vim.g.tagbar_show_tag_linenumbers = 2
--- vim.g.tagbar_iconchars = { "▸", "▾" }
+vim.g.tagbar_autoclose = 1
+vim.g.tagbar_autoclose_netrw = 1
