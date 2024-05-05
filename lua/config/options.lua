@@ -26,6 +26,7 @@ vim.g.header_field_author_email = "lu5her@mail"
 vim.g.header_field_timestamp_format = "%a %b, %d %Y, %H:%M %j"
 vim.g.header_auto_update_header = 1
 vim.g.header_field_last_separator = 1
+vim.g.header_max_size = 20
 
 --for bufferline
 vim.opt.termguicolors = true
