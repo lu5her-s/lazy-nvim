@@ -6,12 +6,12 @@ return {
       {
         "<leader>][",
         "<cmd>OGPT<CR>",
-        desc = "GPT",
+        desc = "Chat",
       },
       {
         "<leader>]]",
         "<cmd>OGPTFocus<CR>",
-        desc = "GPT",
+        desc = "Focus",
       },
       {
         "<leader>]",
