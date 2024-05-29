@@ -45,6 +45,7 @@ return {
       dashboard.button("s", "勒" .. "Restore Session", [[:lua require("persistence").load() <cr>]]),
       dashboard.button("c", " " .. "Config", ":e $MYVIMRC | :cd %:p:h | Telescope file_browser<cr>"),
       dashboard.button("l", "鈴" .. "Lazy", "<cmd>Lazy<cr>"),
+      dashboard.button("x", "鈴" .. "LazyExtras", "<cmd>LazyExtras<cr>"),
       dashboard.button("m", " " .. "Mason", "<cmd>Mason<cr>"),
       dashboard.button("q", " " .. "Quit", "<cmd>qa<cr>"),
     }
