@@ -20,6 +20,11 @@ return {
         -- Set `select` to `false` to only confirm explicitly selected items.
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
       })
+      --   table.insert(opts.sources, 1, {
+      --     name = "codeium",
+      --     group_index = 1,
+      --     priority = 100,
+      --   })
     end,
   },
 
