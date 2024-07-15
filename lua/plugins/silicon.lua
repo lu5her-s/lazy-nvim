@@ -18,29 +18,26 @@ return {
     end,
     theme = "gruvbox-dark",
   },
-  keys = {
-    require("which-key").register({
-      ["k"] = {
-        name = "Silicon",
-        ["s"] = {
-          function()
-            require("nvim-silicon").shoot()
-          end,
-          "Create code screenshot",
-        },
-        ["f"] = {
-          function()
-            require("nvim-silicon").file()
-          end,
-          "Save code screenshot as file",
-        },
-        ["c"] = {
-          function()
-            require("nvim-silicon").clip()
-          end,
-          "Copy code screenshot to clipboard",
-        },
-      },
-    }, { prefix = "<leader>", mode = "v" }),
-  },
 }
+-- return {
+--   "krivahtoo/silicon.nvim",
+--   run = "./install.sh build",
+--   config = function()
+--     require("silicon").setup({
+--       font = "Iosevka Nerd Font Mono=16",
+--       theme = "Monokai Extended",
+--       line_number = true,
+--       watermark = {
+--         text = "0x00000000",
+--       },
+--       output = {
+--         path = "~/Pictures/Code/",
+--         clipboard = true,
+--         format = "silicon_[year][month][day]_[hour][minute][second].png",
+--       },
+--       window_title = function()
+--         return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), ":t")
+--       end,
+--     })
+--   end,
+-- }

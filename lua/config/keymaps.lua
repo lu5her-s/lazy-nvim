@@ -70,6 +70,19 @@ vim.keymap.set("i", "<c-;>", function()
   return vim.fn["codeium#Accept"]()
 end, { expr = true })
 
+-- Generate image of lines in a visual selection
+vim.keymap.set("v", "<Leader>cxs", function()
+  require("nvim-silicon").shoot()
+end, { desc = "Generate code screenshot" })
+-- Generate image of a whole buffer, with lines in a visual selection highlighted
+vim.keymap.set("v", "<Leader>cxbs", function()
+  require("nvim-silicon").file()
+end, { desc = "Generate code screenshot as file" })
+-- Generate visible portion of a buffer
+vim.keymap.set("n", "<Leader>cxs", function()
+  require("nvim-silicon").clip()
+end, { desc = "Generate code screenshot to clipboard" })
+
 -- -- Generate image of lines in a visual selection
 -- vim.keymap.set("v", "<Leader>cxs", function()
 --   silicon.visualise_api()
