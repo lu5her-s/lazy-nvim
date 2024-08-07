@@ -176,12 +176,16 @@ return {
   -- which-key extensions
   {
     "folke/which-key.nvim",
-    opts = function()
-      require("which-key").register({
-        ["<leader>d"] = { name = "+debug", mode = { "n", "v" } },
-        ["<leader>ct"] = { name = "+test" },
-      })
-    end,
+    -- opts = function()
+    --   require("which-key").register({
+    --     ["<leader>d"] = { name = "+debug", mode = { "n", "v" } },
+    --     ["<leader>ct"] = { name = "+test" },
+    --   })
+    -- end,
+    keys = {
+      { "<leader>ct", group = "test" },
+      { "<leader>d", group = "debug", mode = { "n", "v" } },
+    },
   },
 
   -- git blame
