@@ -99,3 +99,6 @@ end, { desc = "Generate code screenshot to clipboard" })
 -- vim.keymap.set("n", "<Leader>cxs", function()
 --   silicon.visualise_api({ to_clip = true })
 -- end)
+
+-- set keymap for lorem.nvim in mode n,i if i mode set esc to n mode
+vim.keymap.set("n", "<Leader>r", ":LoremIpsum ", { desc = "Lorem" })
