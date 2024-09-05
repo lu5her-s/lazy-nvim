@@ -101,4 +101,4 @@ end, { desc = "Generate code screenshot to clipboard" })
 -- end)
 
 -- set keymap for lorem.nvim in mode n,i if i mode set esc to n mode
-vim.keymap.set("n", "<Leader>r", ":LoremIpsum ", { desc = "Lorem" })
+-- vim.keymap.set("n", "<Leader>r", ":LoremIpsum ", { desc = "Lorem" })
