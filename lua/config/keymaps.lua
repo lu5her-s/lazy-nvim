@@ -102,3 +102,13 @@ end, { desc = "Generate code screenshot to clipboard" })
 
 -- set keymap for lorem.nvim in mode n,i if i mode set esc to n mode
 -- vim.keymap.set("n", "<Leader>r", ":LoremIpsum ", { desc = "Lorem" })
+
+-- key for codecompanion
+vim.api.nvim_set_keymap("n", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<LocalLeader>[", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<LocalLeader>[", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+--
+-- -- Expand 'cc' into 'CodeCompanion' in the command line
+-- vim.cmd([[cab cc CodeCompanion]])

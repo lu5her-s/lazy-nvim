@@ -69,3 +69,5 @@ vim.g.tagbar_sort = 0
 vim.g.tagbar_show_tag_linenumbers = 2
 vim.g.tagbar_autoclose = 1
 vim.g.tagbar_autoclose_netrw = 1
+
+vim.opt.laststatus = 3
