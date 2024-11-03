@@ -7,6 +7,17 @@ return {
     "nvim-telescope/telescope.nvim", -- Optional: For using slash commands
     { "stevearc/dressing.nvim", opts = {} }, -- Optional: Improves `vim.ui.select`
   },
-
-  config = true,
+  -- config = true,
+  config = function()
+    require("codecompanion").setup({
+      strategies = {
+        chat = {
+          adapter = "gemini",
+        },
+        inline = {
+          adapter = "gemini",
+        },
+      },
+    })
+  end,
 }

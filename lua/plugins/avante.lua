@@ -43,4 +43,10 @@ return {
       ft = { "markdown", "Avante" },
     },
   },
+  config = function()
+    require("avante").setup({
+      provider = "gemini",
+      auto_suggestions_provider = "gemini",
+    })
+  end,
 }
