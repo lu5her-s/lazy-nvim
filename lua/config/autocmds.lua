@@ -52,6 +52,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- loaded my .vim
 vim.cmd("source ~/.config/nvim/autoclose.vim")
 vim.cmd("source ~/.config/nvim/whitespace.vim")
+vim.cmd("source ~/.config/nvim/aw.vim")
 
 vim.lsp.buf.formatting = {
   format_opts = {
