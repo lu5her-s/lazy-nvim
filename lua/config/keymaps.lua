@@ -112,3 +112,7 @@ vim.api.nvim_set_keymap("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap =
 --
 -- -- Expand 'cc' into 'CodeCompanion' in the command line
 -- vim.cmd([[cab cc CodeCompanion]])
+
+-- set F5 to :AWStart and F6 to :AWStatus
+vim.api.nvim_set_keymap("n", "<F5>", ":AWStart<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<F6>", ":AWStatus<cr>", { noremap = true, silent = true })
