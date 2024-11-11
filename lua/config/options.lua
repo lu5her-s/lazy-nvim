@@ -71,3 +71,6 @@ vim.g.tagbar_autoclose = 1
 vim.g.tagbar_autoclose_netrw = 1
 
 vim.opt.laststatus = 3
+
+vim.g.aw_apiurl_host = "127.0.0.1"
+vim.g.aw_apiurl_port = "5600"
