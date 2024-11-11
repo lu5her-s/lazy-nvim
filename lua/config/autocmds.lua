@@ -52,9 +52,9 @@ vim.api.nvim_create_autocmd("FileType", {
 -- loaded my .vim
 vim.cmd("source ~/.config/nvim/autoclose.vim")
 vim.cmd("source ~/.config/nvim/whitespace.vim")
-vim.cmd("source ~/.config/nvim/aw.vim")
+-- vim.cmd("source ~/.config/nvim/aw.vim")
 -- when open nvim call :AWStart
-vim.cmd("AWStart")
+-- vim.cmd("AWStart")
 -- let g:aw_apiurl_host = <IP_OF_THE_HOST>
 
 vim.lsp.buf.formatting = {
