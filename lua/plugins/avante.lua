@@ -47,6 +47,9 @@ return {
     require("avante").setup({
       provider = "gemini",
       auto_suggestions_provider = "gemini",
+      -- gemini = {
+      --   model = "gemini-1.5-pro",
+      -- },
     })
   end,
 }
