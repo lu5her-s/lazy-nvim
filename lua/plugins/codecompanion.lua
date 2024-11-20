@@ -10,6 +10,17 @@ return {
   -- config = true,
   config = function()
     require("codecompanion").setup({
+      adapters = {
+        gemini = function()
+          return require("codecompanion.adapters").extend("gemini", {
+            schema = {
+              model = {
+                default = "gemini-1.5-pro",
+              },
+            },
+          })
+        end,
+      },
       strategies = {
         chat = {
           adapter = "gemini",
