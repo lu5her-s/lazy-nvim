@@ -48,7 +48,7 @@ return {
       provider = "gemini",
       auto_suggestions_provider = "gemini",
       gemini = {
-        model = "gemini-1.5-pro",
+        model = "gemini-1.5-flash-latest",
       },
     })
   end,

@@ -15,7 +15,7 @@ return {
           return require("codecompanion.adapters").extend("gemini", {
             schema = {
               model = {
-                default = "gemini-1.5-pro",
+                default = "gemini-1.5-flash-latest",
               },
             },
           })
