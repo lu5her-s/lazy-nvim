@@ -2,7 +2,7 @@
 File              : keymaps.lua
 Author            : lu5her <lu5her@mail>
 Date              : Tue Jan, 23 2024, 14:03 023
-Last Modified Date: Tue Jan, 23 2024, 14:03 023
+Last Modified Date: Wed Dec, 04 2024, 11:28 339
 Last Modified By  : lu5her <lu5her@mail>
 --]]
 --
@@ -114,5 +114,5 @@ vim.api.nvim_set_keymap("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap =
 -- vim.cmd([[cab cc CodeCompanion]])
 
 -- set F5 to :AWStart and F6 to :AWStatus
-vim.api.nvim_set_keymap("n", "<F5>", ":AWStart<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<F6>", ":AWStatus<cr>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<F5>", ":AWStart<cr>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<F6>", ":AWStatus<cr>", { noremap = true, silent = true })
