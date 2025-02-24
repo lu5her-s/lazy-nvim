@@ -1,5 +1,22 @@
 return {
   "epwalsh/obsidian.nvim",
+  version = "*",
+  lazy = true,
+  ft = "markdown",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+  },
+  opts = {
+    workspaces = {
+      {
+        name = "personal",
+        path = "~/Obsidian/lu5her",
+      },
+    },
+  },
+}
+--[[ return {
+  "epwalsh/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   ft = "markdown",
@@ -21,14 +38,14 @@ return {
     workspaces = {
       {
         name = "personal",
-        path = "~/Obsidian/lu5her/",
+        path = "~/Obsidian/lu5her",
       },
       {
         name = "work",
-        path = "~/Obsidian/lu5her/",
+        path = "~/Obsidian/lu5her",
       },
     },
 
     -- see below for full list of options 👇
   },
-}
+} ]]
