@@ -20,7 +20,7 @@ return {
     "hrsh7th/nvim-cmp",
     "ibhagwan/fzf-lua",
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-    "zbirenbaum/copilot.lua",      -- for providers='copilot'
+    "zbirenbaum/copilot.lua", -- for providers='copilot'
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
@@ -58,6 +58,15 @@ return {
       web_search_engine = {
         provider = "google",
       },
+      -- provider = "deepseek",
+      -- vendors = {
+      --   deepseek = {
+      --     __inherited_from = "openai",
+      --     api_key_name = "DEEPSEEK_API_KEY",
+      --     endpoint = "https://api.deepseek.com",
+      --     model = "deepseek-coder",
+      --   },
+      -- },
     })
   end,
 }
