@@ -138,7 +138,7 @@ return {
       extensions = {
         project = {
           base_dirs = {
-            "~/Projects",
+            "~/01-Projects/",
           },
         },
         undo = {
