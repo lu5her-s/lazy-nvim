@@ -49,22 +49,40 @@ return {
   },
   config = function()
     require("avante").setup({
-      provider = "gemini",
-      auto_suggestions_provider = "gemini",
-      gemini = {
-        -- model = "gemini-1.5-flash-latest",
-        model = "gemini-2.0-flash",
+      provider = "openai",
+      auto_suggestions_provider = "openai",
+      -- gemini = {
+      --   -- model = "gemini-1.5-flash-latest",
+      --   model = "gemini-2.0-flash",
+      -- },
+
+      openai = {
+        -- api_key = "secret",
+        endpoint = "http://localhost:1337/v1",
+        model = "gpt-4o",
+        -- model = "o1",
       },
       web_search_engine = {
         provider = "google",
       },
       -- provider = "deepseek",
+      -- auto_suggestions_provider = "deepseek",
+      -- vendors = {
+      --   deepseek = {
+      --     -- __inherited_from = "openai",
+      --     -- api_key_name = "secret",
+      --     endpoint = "http://localhost:1337/v1",
+      --     model = "deepseek-v3",
+      --   },
+      -- },
+      -- provider = "deepseek",
       -- vendors = {
       --   deepseek = {
       --     __inherited_from = "openai",
       --     api_key_name = "DEEPSEEK_API_KEY",
-      --     endpoint = "https://api.deepseek.com",
-      --     model = "deepseek-coder",
+      --     -- api_key = "secret",
+      --     endpoint = "http://localhost:1337/v1",
+      --     model = "gpt-4o",
       --   },
       -- },
     })
