@@ -22,7 +22,7 @@ return {
         -- end,
         g4f = function()
           return require("codecompanion.adapters").extend("openai", {
-            url = "http://localhost:1337/v1/chat/completions",
+            url = "https://6fc7-103-151-252-78.ngrok-free.app/v1/chat/completions",
             -- env = {
             --   -- api_base = "http://localhost:1337/v1",
             --   api_key = "secret",

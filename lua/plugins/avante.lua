@@ -58,7 +58,8 @@ return {
 
       openai = {
         -- api_key = "secret",
-        endpoint = "http://localhost:1337/v1",
+        -- endpoint = "http://localhost:1337/v1",
+        endpoint = "https://6fc7-103-151-252-78.ngrok-free.app/v1",
         model = "gpt-4o",
         -- model = "o1",
       },
