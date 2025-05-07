@@ -71,17 +71,17 @@ vim.keymap.set("i", "<c-;>", function()
 end, { expr = true })
 
 -- Generate image of lines in a visual selection
-vim.keymap.set("v", "<Leader>cxs", function()
-  require("nvim-silicon").shoot()
-end, { desc = "Generate code screenshot" })
--- Generate image of a whole buffer, with lines in a visual selection highlighted
-vim.keymap.set("v", "<Leader>cxbs", function()
-  require("nvim-silicon").file()
-end, { desc = "Generate code screenshot as file" })
--- Generate visible portion of a buffer
-vim.keymap.set("n", "<Leader>cxs", function()
-  require("nvim-silicon").clip()
-end, { desc = "Generate code screenshot to clipboard" })
+-- vim.keymap.set("v", "<Leader>cxs", function()
+--   require("nvim-silicon").shoot()
+-- end, { desc = "Generate code screenshot" })
+-- -- Generate image of a whole buffer, with lines in a visual selection highlighted
+-- vim.keymap.set("v", "<Leader>cxbs", function()
+--   require("nvim-silicon").file()
+-- end, { desc = "Generate code screenshot as file" })
+-- -- Generate visible portion of a buffer
+-- vim.keymap.set("n", "<Leader>cxs", function()
+--   require("nvim-silicon").clip()
+-- end, { desc = "Generate code screenshot to clipboard" })
 
 -- -- Generate image of lines in a visual selection
 -- vim.keymap.set("v", "<Leader>cxs", function()
@@ -116,3 +116,31 @@ vim.api.nvim_set_keymap("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap =
 -- set F5 to :AWStart and F6 to :AWStatus
 -- vim.api.nvim_set_keymap("n", "<F5>", ":AWStart<cr>", { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap("n", "<F6>", ":AWStatus<cr>", { noremap = true, silent = true })
+
+-- key for silicon
+local wk = require("which-key")
+wk.add({
+  mode = { "v", "n" },
+  { "<leader>c", group = "Silicon" },
+  {
+    "<leader>cxb",
+    function()
+      require("nvim-silicon").clip()
+    end,
+    desc = "Copy code screenshot to clipboard",
+  },
+  {
+    "<leader>cxf",
+    function()
+      require("nvim-silicon").file()
+    end,
+    desc = "Save code screenshot as file",
+  },
+  {
+    "<leader>cxc",
+    function()
+      require("nvim-silicon").shoot()
+    end,
+    desc = "Create code screenshot",
+  },
+})
