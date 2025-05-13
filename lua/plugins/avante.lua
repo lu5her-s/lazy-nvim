@@ -5,6 +5,53 @@ return {
   version = false, -- set this if you want to always pull the latest change
   opts = {
     -- add any opts here
+    -- provider = "deepseek-reasoner",
+    -- vendors = {
+    --   ["deepseek-reasoner"] = {
+    --     __inherited_from = "openai",
+    --     api_key_name = api_key_name,
+    --     endpoint = "https://api.deepseek.com",
+    --     model = "deepseek-reasoner",
+    --     disable_tools = true,
+    --   },
+    -- },
+    file_selector = {
+      provider = "snacks",
+    },
+    hints = {
+      enabled = false,
+    },
+    -- system_prompt as function ensures LLM always has latest MCP server state
+    -- This is evaluated for every message, even in existing chats
+    system_prompt = function()
+      local hub = require("mcphub").get_hub_instance()
+      if hub and hub.get_active_servers_prompt then
+        return hub:get_active_servers_prompt()
+      else
+        return "No active MCP servers"
+      end
+    end,
+    -- system_prompt = function()
+    --   local hub = require("mcphub").get_hub_instance()
+    --   return hub:get_active_servers_prompt()
+    -- end,
+    -- -- Using function prevents requiring mcphub before it's loaded
+    -- custom_tools = function()
+    --   return {
+    --     require("mcphub.extensions.avante").mcp_tool(),
+    --   }
+    -- end,
+  },
+  keys = {
+    {
+      -- add key for img-clip use <leader>aip
+      "<leader>aip",
+      function()
+        return vim.bo.filetype == "AvanteInput" and require("clipboard").paste_image()
+          or require("img-clip").paste_image()
+      end,
+      desc = "Paste image from clipboard",
+    },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
@@ -21,6 +68,7 @@ return {
     "ibhagwan/fzf-lua",
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
     "zbirenbaum/copilot.lua", -- for providers='copilot'
+    "ravitemer/mcphub.nvim",
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
@@ -58,10 +106,22 @@ return {
 
       openai = {
         -- api_key = "secret",
-        -- endpoint = "http://localhost:1337/v1",
-        endpoint = "https://6fc7-103-151-252-78.ngrok-free.app/v1",
+        endpoint = "http://localhost:8080/v1",
+        -- endpoint = "https://6fc7-103-151-252-78.ngrok-free.app/v1",
         model = "gpt-4o",
         -- model = "o1",
+        -- disable_tools = {
+        --   "list_files",
+        --   "search_files",
+        --   "read_file",
+        --   "create_file",
+        --   "rename_file",
+        --   "delete_file",
+        --   "create_dir",
+        --   "rename_dir",
+        --   "delete_dir",
+        --   "bash",
+        -- },
       },
       web_search_engine = {
         provider = "google",
@@ -86,6 +146,20 @@ return {
       --     model = "gpt-4o",
       --   },
       -- },
+
+      -- setup for mcphub
+      -- other config
+      -- The system_prompt type supports both a string and a function that returns a string. Using a function here allows dynamically updating the prompt with mcphub
+      -- system_prompt = function()
+      --   local hub = require("mcphub").get_hub_instance()
+      --   return hub:get_active_servers_prompt()
+      -- end,
+      -- -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
+      -- custom_tools = function()
+      --   return {
+      --     require("mcphub.extensions.avante").mcp_tool(),
+      --   }
+      -- end,
     })
   end,
 }

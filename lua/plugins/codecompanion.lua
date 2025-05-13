@@ -6,10 +6,31 @@ return {
     "hrsh7th/nvim-cmp", -- Optional: For using slash commands and variables in the chat buffer
     "nvim-telescope/telescope.nvim", -- Optional: For using slash commands
     { "stevearc/dressing.nvim", opts = {} }, -- Optional: Improves `vim.ui.select`
+    -- "ravitemer/mcphub.nvim",
   },
   -- config = true,
   config = function()
     require("codecompanion").setup({
+      -- extensions = {
+      --   mcphub = {
+      --     callback = "mcphub.extensions.codecompanion",
+      --     opts = {
+      --       make_vars = true,
+      --       make_slash_commands = true,
+      --       show_result_in_chat = true,
+      --     },
+      --   },
+      -- },
+      -- extensions = {
+      --   mcphub = {
+      --     callback = "mcphub.extensions.codecompanion",
+      --     opts = {
+      --       show_result_in_chat = true, -- Show the mcp tool result in the chat buffer
+      --       make_vars = true, -- make chat #variables from MCP server resources
+      --       make_slash_commands = true, -- make /slash_commands from MCP server prompts
+      --     },
+      --   },
+      -- },
       adapters = {
         -- gemini = function()
         --   return require("codecompanion.adapters").extend("gemini", {
@@ -22,7 +43,8 @@ return {
         -- end,
         g4f = function()
           return require("codecompanion.adapters").extend("openai", {
-            url = "https://6fc7-103-151-252-78.ngrok-free.app/v1/chat/completions",
+            -- url = "https://6fc7-103-151-252-78.ngrok-free.app/v1/chat/completions",
+            url = "http://localhost:8080/v1/chat/completions",
             -- env = {
             --   -- api_base = "http://localhost:1337/v1",
             --   api_key = "secret",

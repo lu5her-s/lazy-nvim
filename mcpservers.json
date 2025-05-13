@@ -1,0 +1,44 @@
+{
+  "nativeMCPServers": [],
+  "mcpServers": {
+    "fetch": {
+      "env": {
+        "OP_KEY": "$: cmd:op read op:key",
+        "AUTH_HEADER": "BEARER ${API_KEY}",
+        "API_KEY": "",
+        "DEBUG": "true",
+        "SERVER_URL": null
+      },
+      "disabled": true,
+      "args": [
+        "mcp-server-fetch",
+        "$API_KEY"
+      ],
+      "command": "uvx"
+    },
+    "filesystem": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "~/00-Inbox/",
+        "~/01-Projects/"
+      ],
+      "command": "npx"
+    },
+    "remote-server": {
+      "url": "https://api.example.com/mcp",
+      "disabled": true,
+      "headers": {
+        "Authorization": "Bearer ${API_KEY}"
+      }
+    },
+    "sqlite": {
+      "args": [
+        "mcp-server-sqlite",
+        "--db-path",
+        "~/Downloads/chinook.db"
+      ],
+      "command": "uvx"
+    }
+  }
+}
