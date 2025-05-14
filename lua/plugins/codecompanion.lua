@@ -70,6 +70,11 @@ return {
             make_slash_commands = true, -- Add prompts as /slash commands
           },
         },
+        -- vectorcode = {
+        --   opts = {
+        --     add_tool = true,
+        --   },
+        -- },
       },
     })
   end,
