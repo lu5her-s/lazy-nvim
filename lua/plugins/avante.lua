@@ -64,7 +64,7 @@ return {
     --- The below dependencies are optional,
     "echasnovski/mini.pick",
     "nvim-telescope/telescope.nvim",
-    "hrsh7th/nvim-cmp",
+    -- "hrsh7th/nvim-cmp",
     "ibhagwan/fzf-lua",
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
     "zbirenbaum/copilot.lua", -- for providers='copilot'
@@ -97,19 +97,19 @@ return {
   },
   config = function()
     require("avante").setup({
-      provider = "gemini",
-      auto_suggestions_provider = "gemini",
+      provider = "openai",
+      auto_suggestions_provider = "openai",
       gemini = {
         -- model = "gemini-1.5-flash-latest",
         model = "gemini-2.0-flash",
       },
 
-      -- openai = {
-      --   -- api_key = "secret",
-      --   endpoint = "http://localhost:8080/v1",
-      --   -- endpoint = "https://6fc7-103-151-252-78.ngrok-free.app/v1",
-      --   model = "gpt-4o",
-      -- },
+      openai = {
+        -- api_key = "secret",
+        endpoint = "http://localhost:8080/v1",
+        -- endpoint = "https://6fc7-103-151-252-78.ngrok-free.app/v1",
+        model = "gpt-4o",
+      },
       web_search_engine = {
         provider = "google",
       },

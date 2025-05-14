@@ -24,15 +24,15 @@ return {
   config = function()
     require("codecompanion").setup({
       adapters = {
-        gemini = function()
-          return require("codecompanion.adapters").extend("gemini", {
-            schema = {
-              model = {
-                default = "gemini-2.0-flash",
-              },
-            },
-          })
-        end,
+        -- gemini = function()
+        --   return require("codecompanion.adapters").extend("gemini", {
+        --     schema = {
+        --       model = {
+        --         default = "gemini-2.0-flash",
+        --       },
+        --     },
+        --   })
+        -- end,
         g4f = function()
           return require("codecompanion.adapters").extend("openai", {
             url = "http://localhost:8080/v1/chat/completions",
