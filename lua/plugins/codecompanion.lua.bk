@@ -32,46 +32,46 @@ return {
       --   },
       -- },
       adapters = {
-        -- gemini = function()
-        --   return require("codecompanion.adapters").extend("gemini", {
-        --     schema = {
-        --       model = {
-        --         default = "gemini-2.0-flash",
-        --       },
-        --     },
-        --   })
-        -- end,
-        g4f = function()
-          return require("codecompanion.adapters").extend("openai", {
-            -- url = "https://6fc7-103-151-252-78.ngrok-free.app/v1/chat/completions",
-            url = "http://localhost:8080/v1/chat/completions",
-            -- env = {
-            --   -- api_base = "http://localhost:1337/v1",
-            --   api_key = "secret",
-            -- },
+        gemini = function()
+          return require("codecompanion.adapters").extend("gemini", {
             schema = {
               model = {
-                default = "gpt-4o",
-                choices = {
-                  ["deepseek-r1"] = { opts = { can_reason = true } },
-                  "gpt-4o",
-                  "grok-3",
-                  ["gemini-2.0-flash"] = { opts = { can_reason = true } },
-                },
+                default = "gemini-2.0-flash",
               },
             },
           })
         end,
+        -- g4f = function()
+        --   return require("codecompanion.adapters").extend("openai", {
+        --     -- url = "https://6fc7-103-151-252-78.ngrok-free.app/v1/chat/completions",
+        --     url = "http://localhost:8080/v1/chat/completions",
+        --     -- env = {
+        --     --   -- api_base = "http://localhost:1337/v1",
+        --     --   api_key = "secret",
+        --     -- },
+        --     schema = {
+        --       model = {
+        --         default = "gpt-4o",
+        --         choices = {
+        --           ["deepseek-r1"] = { opts = { can_reason = true } },
+        --           "gpt-4o",
+        --           "grok-3",
+        --           ["gemini-2.0-flash"] = { opts = { can_reason = true } },
+        --         },
+        --       },
+        --     },
+        --   })
+        -- end,
       },
       strategies = {
         chat = {
-          adapter = "g4f",
+          adapter = "gemini",
         },
         inline = {
-          adapter = "g4f",
+          adapter = "gemini",
         },
         cmd = {
-          adapter = "g4f",
+          adapter = "gemini",
         },
       },
     })

@@ -21,16 +21,16 @@ return {
     hints = {
       enabled = false,
     },
-    -- system_prompt as function ensures LLM always has latest MCP server state
-    -- This is evaluated for every message, even in existing chats
-    system_prompt = function()
-      local hub = require("mcphub").get_hub_instance()
-      if hub and hub.get_active_servers_prompt then
-        return hub:get_active_servers_prompt()
-      else
-        return "No active MCP servers"
-      end
-    end,
+    -- -- system_prompt as function ensures LLM always has latest MCP server state
+    -- -- This is evaluated for every message, even in existing chats
+    -- system_prompt = function()
+    --   local hub = require("mcphub").get_hub_instance()
+    --   if hub and hub.get_active_servers_prompt then
+    --     return hub:get_active_servers_prompt()
+    --   else
+    --     return "No active MCP servers"
+    --   end
+    -- end,
     -- system_prompt = function()
     --   local hub = require("mcphub").get_hub_instance()
     --   return hub:get_active_servers_prompt()
@@ -68,7 +68,7 @@ return {
     "ibhagwan/fzf-lua",
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
     "zbirenbaum/copilot.lua", -- for providers='copilot'
-    "ravitemer/mcphub.nvim",
+    -- "ravitemer/mcphub.nvim",
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
@@ -97,32 +97,19 @@ return {
   },
   config = function()
     require("avante").setup({
-      provider = "openai",
-      auto_suggestions_provider = "openai",
-      -- gemini = {
-      --   -- model = "gemini-1.5-flash-latest",
-      --   model = "gemini-2.0-flash",
-      -- },
-
-      openai = {
-        -- api_key = "secret",
-        endpoint = "http://localhost:8080/v1",
-        -- endpoint = "https://6fc7-103-151-252-78.ngrok-free.app/v1",
-        model = "gpt-4o",
-        -- model = "o1",
-        -- disable_tools = {
-        --   "list_files",
-        --   "search_files",
-        --   "read_file",
-        --   "create_file",
-        --   "rename_file",
-        --   "delete_file",
-        --   "create_dir",
-        --   "rename_dir",
-        --   "delete_dir",
-        --   "bash",
-        -- },
+      provider = "gemini",
+      auto_suggestions_provider = "gemini",
+      gemini = {
+        -- model = "gemini-1.5-flash-latest",
+        model = "gemini-2.0-flash",
       },
+
+      -- openai = {
+      --   -- api_key = "secret",
+      --   endpoint = "http://localhost:8080/v1",
+      --   -- endpoint = "https://6fc7-103-151-252-78.ngrok-free.app/v1",
+      --   model = "gpt-4o",
+      -- },
       web_search_engine = {
         provider = "google",
       },

@@ -67,3 +67,9 @@ vim.lsp.buf.formatting = {
     return client.name == "null-ls"
   end,
 }
+
+-- set buffer modified for codecompanion
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*",
+  command = "set modifiable",
+})
