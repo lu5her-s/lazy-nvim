@@ -19,7 +19,7 @@ return {
     --     adapter = "g4f",
     --   },
     -- },
-    log_level = "ERROR",
+    log_level = "TRACE",
   },
   config = function()
     require("codecompanion").setup({
@@ -38,7 +38,7 @@ return {
             url = "http://localhost:8080/v1/chat/completions",
             schema = {
               model = {
-                default = "gpt-4o",
+                default = "gpt-4.1-xlarge",
                 choices = {
                   ["deepseek-r1"] = { opts = { can_reason = true } },
                   "gpt-4o",
@@ -52,13 +52,13 @@ return {
       },
       strategies = {
         chat = {
-          adapter = "gemini",
+          adapter = "g4f",
         },
         inline = {
-          adapter = "gemini",
+          adapter = "g4f",
         },
         cmd = {
-          adapter = "gemini",
+          adapter = "g4f",
         },
       },
       extensions = {
