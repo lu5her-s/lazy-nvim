@@ -33,8 +33,29 @@ return {
         --     },
         --   })
         -- end,
+        -- openai = function()
+        --   return require("codecompanion.adapters").extend("openai", {
+        --     env = {
+        --       url = "http://localhost:8080/v1/chat/completions",
+        --       -- api_key = "secret",
+        --       -- chat_url = "/v1/chat/completions",
+        --       -- models_endpoint = "/v1/models",
+        --     },
+        --     schema = {
+        --       model = {
+        --         default = "gpt-4.1",
+        --         choices = {
+        --           ["deepseek-r1"] = { opts = { can_reason = true } },
+        --           "gpt-4o",
+        --           "grok-3",
+        --           ["gemini-2.0-flash"] = { opts = { can_reason = true } },
+        --         },
+        --       },
+        --     },
+        --   })
+        -- end,
         g4f = function()
-          return require("codecompanion.adapters").extend("gemini", {
+          return require("codecompanion.adapters").extend("openai", {
             url = "http://localhost:8080/v1/chat/completions",
             schema = {
               model = {
