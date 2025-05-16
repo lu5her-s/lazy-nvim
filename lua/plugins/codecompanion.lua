@@ -33,27 +33,20 @@ return {
         --     },
         --   })
         -- end,
-        -- openai = function()
-        --   return require("codecompanion.adapters").extend("openai", {
-        --     env = {
-        --       url = "http://localhost:8080/v1/chat/completions",
-        --       -- api_key = "secret",
-        --       -- chat_url = "/v1/chat/completions",
-        --       -- models_endpoint = "/v1/models",
-        --     },
-        --     schema = {
-        --       model = {
-        --         default = "gpt-4.1",
-        --         choices = {
-        --           ["deepseek-r1"] = { opts = { can_reason = true } },
-        --           "gpt-4o",
-        --           "grok-3",
-        --           ["gemini-2.0-flash"] = { opts = { can_reason = true } },
-        --         },
-        --       },
-        --     },
-        --   })
-        -- end,
+        op_gemini = function()
+          return require("codecompanion.adapters").extend("openai_compatible", {
+            env = {
+              url = "https://openrouter.ai/api/v1",
+              api_key = "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",
+              chat_url = "/v1/chat/completions",
+            },
+            schema = {
+              model = {
+                default = "google/gemini-2.0-flash-exp:free",
+              },
+            },
+          })
+        end,
         g4f = function()
           return require("codecompanion.adapters").extend("openai", {
             url = "http://localhost:8080/v1/chat/completions",
@@ -96,7 +89,7 @@ return {
             },
             schema = {
               model = {
-                default = "gpt-4.1-xlarge", -- define llm model to be used
+                default = "PollinationsAI", -- define llm model to be used
               },
               temperature = {
                 order = 2,
@@ -154,13 +147,13 @@ return {
       },
       strategies = {
         chat = {
-          adapter = "my_openai",
+          adapter = "g4f",
         },
         inline = {
-          adapter = "my_openai",
+          adapter = "g4f",
         },
         cmd = {
-          adapter = "my_openai",
+          adapter = "g4f",
         },
       },
       extensions = {
