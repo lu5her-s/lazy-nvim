@@ -52,7 +52,7 @@ return {
             url = "http://localhost:8080/v1/chat/completions",
             schema = {
               model = {
-                default = "mistral-large",
+                default = "gpt-4.1",
                 choices = {
                   ["deepseek-r1"] = { opts = { can_reason = true } },
                   "gpt-4o",

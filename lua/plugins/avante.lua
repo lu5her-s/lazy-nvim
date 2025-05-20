@@ -108,7 +108,7 @@ return {
         -- api_key = "secret",
         endpoint = "http://localhost:8080/v1",
         -- endpoint = "https://6fc7-103-151-252-78.ngrok-free.app/v1",
-        model = "mistral-large",
+        model = "gpt-4.1",
       },
       web_search_engine = {
         provider = "google",
