@@ -76,5 +76,5 @@ vim.opt.laststatus = 3
 -- vim.g.aw_apiurl_port = "5600"
 
 -- auto approve MCPHubAuthor. All Rights Reserved.
-vim.g.mcphub_auto_approve = true
+-- vim.g.mcphub_auto_approve = true
 vim.g.codecompanion_auto_tool_mode = true
