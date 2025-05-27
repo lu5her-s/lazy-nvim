@@ -24,25 +24,26 @@ return {
   config = function()
     require("codecompanion").setup({
       adapters = {
-        -- gemini = function()
-        --   return require("codecompanion.adapters").extend("gemini", {
-        --     schema = {
-        --       model = {
-        --         default = "gemini-2.0-flash",
-        --       },
-        --     },
-        --   })
-        -- end,
-        op_gemini = function()
+        gemini = function()
+          return require("codecompanion.adapters").extend("gemini", {
+            schema = {
+              model = {
+                default = "gemini-2.0-flash",
+              },
+            },
+          })
+        end,
+        openrouter = function()
           return require("codecompanion.adapters").extend("openai_compatible", {
             env = {
-              url = "https://openrouter.ai/api/v1",
-              api_key = "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",
+              url = "https://openrouter.ai/api",
+              -- api_key = "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",
+              api_key = os.getenv("OPENROUTER_API_KEY"),
               chat_url = "/v1/chat/completions",
             },
             schema = {
               model = {
-                default = "google/gemini-2.0-flash-exp:free",
+                default = "qwen/qwen3-32b:free",
               },
             },
           })
@@ -147,28 +148,29 @@ return {
       },
       strategies = {
         chat = {
-          adapter = "g4f",
+          adapter = "gemini",
         },
         inline = {
-          adapter = "g4f",
+          adapter = "gemini",
         },
         cmd = {
-          adapter = "g4f",
+          adapter = "gemini",
         },
       },
       extensions = {
-        -- mcphub = {
-        --   callback = "mcphub.extensions.codecompanion",
-        --   opts = {
-        --     show_result_in_chat = true, -- Show mcp tool results in chat
-        --     make_vars = true, -- Convert resources to #variables
-        --     make_slash_commands = true, -- Add prompts as /slash commands
-        --   },
-        -- vectorcode = {
-        --   opts = {
-        --     add_tool = true,
-        --   },
-        -- },
+        mcphub = {
+          callback = "mcphub.extensions.codecompanion",
+          opts = {
+            show_result_in_chat = true, -- Show mcp tool results in chat
+            make_vars = true, -- Convert resources to #variables
+            make_slash_commands = true, -- Add prompts as /slash commands
+          },
+          vectorcode = {
+            opts = {
+              add_tool = true,
+            },
+          },
+        },
       },
     })
   end,

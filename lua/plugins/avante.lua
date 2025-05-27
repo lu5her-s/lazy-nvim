@@ -98,7 +98,16 @@ return {
   config = function()
     require("avante").setup({
       provider = "openai",
+      -- provider = "openrouter",
       auto_suggestions_provider = "openai",
+      vendors = {
+        openrouter = {
+          __inherited_from = "openai",
+          endpoint = "https://openrouter.ai/api/v1",
+          api_key_name = os.getenv("OPENROUTER_API_KEY"),
+          model = "qwen/qwen3-32b:free",
+        },
+      },
       gemini = {
         -- model = "gemini-1.5-flash-latest",
         model = "gemini-2.0-flash",
