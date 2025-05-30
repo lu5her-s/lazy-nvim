@@ -54,7 +54,7 @@ return {
       -- dashboard.button("leader s b", "Open buffers", "<cmd>Telescope buffers<cr>"),
       -- dashboard.button("p", " " .. "Open project", "<cmd>Telescope project display_type=full<cr>"),
       dashboard.button("e", " " .. "New file", "<cmd>ene <BAR> startinsert<cr>"),
-      dashboard.button("f", " " .. "Find file", "<cmd>cd $HOME/Projects | Telescope find_files<cr>"),
+      -- dashboard.button("f", " " .. "Find file", "<cmd>cd $HOME/Projects | Telescope find_files<cr>"),
       dashboard.button("r", " " .. "Recent files", "<CMD>Telescope oldfiles<cr>"),
       dashboard.button("s", " " .. "Restore Session", [[:lua require("persistence").load() <cr>]]),
       dashboard.button("c", " " .. "Config", ":e $MYVIMRC | :cd %:p:h | Telescope file_browser<cr>"),
@@ -76,7 +76,7 @@ return {
     footer = function()
       local info = {}
       local fortune = require("fortune").get_fortune()
-      info[1] = "  Neovim loaded " .. vim.fn.strftime("%H:%M") .. " on " .. vim.fn.strftime("%a %d, %b %y") .. " "
+      -- info[1] = "  Neovim loaded " .. vim.fn.strftime("%H:%M") .. " on " .. vim.fn.strftime("%a %d, %b %y") .. " "
       local footer = vim.list_extend(info, fortune)
       return footer
     end
