@@ -1,20 +1,22 @@
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
-  lazy = false,
+  -- lazy = false,
   version = false, -- set this if you want to always pull the latest change
   opts = {
     -- add any opts here
-    -- provider = "deepseek-reasoner",
-    -- vendors = {
-    --   ["deepseek-reasoner"] = {
-    --     __inherited_from = "openai",
-    --     api_key_name = api_key_name,
-    --     endpoint = "https://api.deepseek.com",
-    --     model = "deepseek-reasoner",
-    --     disable_tools = true,
-    --   },
-    -- },
+    provider = "openai",
+    providers = {
+      openai = {
+        endpoint = "http://localhost:8080/v1",
+        model = "gpt-4.1",
+        extra_request_body = {
+          timeout = 30000, -- in milliseconds
+          temperature = 0.75,
+          max_completion_tokens = 8192,
+        },
+      },
+    },
     file_selector = {
       provider = "snacks",
     },
@@ -100,25 +102,25 @@ return {
       provider = "openai",
       -- provider = "openrouter",
       auto_suggestions_provider = "openai",
-      vendors = {
-        openrouter = {
-          __inherited_from = "openai",
-          endpoint = "https://openrouter.ai/api/v1",
-          api_key_name = os.getenv("OPENROUTER_API_KEY"),
-          model = "qwen/qwen3-32b:free",
-        },
-      },
-      gemini = {
-        -- model = "gemini-1.5-flash-latest",
-        model = "gemini-2.0-flash",
-      },
-
-      openai = {
-        -- api_key = "secret",
-        endpoint = "http://localhost:8080/v1",
-        -- endpoint = "https://6fc7-103-151-252-78.ngrok-free.app/v1",
-        model = "gpt-4.1",
-      },
+      -- vendors = {
+      --   openrouter = {
+      --     __inherited_from = "openai",
+      --     endpoint = "https://openrouter.ai/api/v1",
+      --     api_key_name = os.getenv("OPENROUTER_API_KEY"),
+      --     model = "qwen/qwen3-32b:free",
+      --   },
+      -- },
+      -- gemini = {
+      --   -- model = "gemini-1.5-flash-latest",
+      --   model = "gemini-2.0-flash",
+      -- },
+      --
+      -- openai = {
+      --   -- api_key = "secret",
+      --   endpoint = "http://localhost:8080/v1",
+      --   -- endpoint = "https://6fc7-103-151-252-78.ngrok-free.app/v1",
+      --   model = "gpt-4.1",
+      -- },
       web_search_engine = {
         provider = "google",
       },
