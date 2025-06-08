@@ -6,17 +6,17 @@ return {
   opts = {
     -- add any opts here
     provider = "openai",
-    providers = {
-      openai = {
-        endpoint = "http://localhost:8080/v1",
-        model = "gpt-4.1",
-        extra_request_body = {
-          timeout = 30000, -- in milliseconds
-          temperature = 0.75,
-          max_completion_tokens = 8192,
-        },
-      },
-    },
+    -- providers = {
+    --   openai = {
+    --     endpoint = "http://localhost:8080/v1",
+    --     model = "default",
+    --     extra_request_body = {
+    --       timeout = 30000, -- in milliseconds
+    --       temperature = 0.75,
+    --       max_completion_tokens = 8192,
+    --     },
+    --   },
+    -- },
     file_selector = {
       provider = "snacks",
     },
@@ -115,12 +115,12 @@ return {
       --   model = "gemini-2.0-flash",
       -- },
       --
-      -- openai = {
-      --   -- api_key = "secret",
-      --   endpoint = "http://localhost:8080/v1",
-      --   -- endpoint = "https://6fc7-103-151-252-78.ngrok-free.app/v1",
-      --   model = "gpt-4.1",
-      -- },
+      openai = {
+        api_key = "secret",
+        endpoint = "http://localhost:8080/v1",
+        -- endpoint = "https://6fc7-103-151-252-78.ngrok-free.app/v1",
+        model = "default",
+      },
       web_search_engine = {
         provider = "google",
       },
