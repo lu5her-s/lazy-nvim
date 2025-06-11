@@ -5,9 +5,11 @@ return {
   version = false, -- set this if you want to always pull the latest change
   opts = {
     -- add any opts here
-    provider = "openai",
+    -- provider = "g4f",
     -- providers = {
-    --   openai = {
+    --   g4f = {
+    --     __inherited_from = "openai",
+    --     api_key = "secret",
     --     endpoint = "http://localhost:8080/v1",
     --     model = "default",
     --     extra_request_body = {
@@ -99,9 +101,9 @@ return {
   },
   config = function()
     require("avante").setup({
-      provider = "openai",
+      -- provider = "g4f",
       -- provider = "openrouter",
-      auto_suggestions_provider = "openai",
+      -- auto_suggestions_provider = "g4f",
       -- vendors = {
       --   openrouter = {
       --     __inherited_from = "openai",
@@ -115,25 +117,25 @@ return {
       --   model = "gemini-2.0-flash",
       -- },
       --
-      openai = {
-        api_key = "secret",
-        endpoint = "http://localhost:8080/v1",
-        -- endpoint = "https://6fc7-103-151-252-78.ngrok-free.app/v1",
-        model = "default",
-      },
+      -- openai = {
+      --   api_key = "secret",
+      --   endpoint = "http://localhost:8080/v1",
+      --   -- endpoint = "https://6fc7-103-151-252-78.ngrok-free.app/v1",
+      --   model = "default",
+      -- },
       web_search_engine = {
         provider = "google",
       },
-      -- provider = "deepseek",
-      -- auto_suggestions_provider = "deepseek",
-      -- vendors = {
-      --   deepseek = {
-      --     -- __inherited_from = "openai",
-      --     -- api_key_name = "secret",
-      --     endpoint = "http://localhost:1337/v1",
-      --     model = "deepseek-v3",
-      --   },
-      -- },
+      provider = "g4f",
+      auto_suggestions_provider = "g4f",
+      providers = {
+        g4f = {
+          __inherited_from = "openai",
+          api_key = "secret",
+          endpoint = "http://localhost:8080/v1",
+          model = "default",
+        },
+      },
       -- provider = "deepseek",
       -- vendors = {
       --   deepseek = {
