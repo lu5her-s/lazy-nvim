@@ -54,12 +54,12 @@ return {
             schema = {
               model = {
                 default = "default",
-                choices = {
-                  ["deepseek-r1"] = { opts = { can_reason = true } },
-                  "gpt-4o",
-                  "grok-3",
-                  ["gemini-2.0-flash"] = { opts = { can_reason = true } },
-                },
+                -- choices = {
+                --   ["deepseek-r1"] = { opts = { can_reason = true } },
+                --   "gpt-4o",
+                --   "grok-3",
+                --   ["gemini-2.0-flash"] = { opts = { can_reason = true } },
+                -- },
               },
             },
           })
