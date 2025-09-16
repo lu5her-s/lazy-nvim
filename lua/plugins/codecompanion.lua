@@ -53,7 +53,7 @@ return {
             url = "http://localhost:8080/v1/chat/completions",
             schema = {
               model = {
-                default = "default",
+                default = "deepseek",
                 -- choices = {
                 --   ["deepseek-r1"] = { opts = { can_reason = true } },
                 --   "gpt-4o",
