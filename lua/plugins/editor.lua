@@ -7,7 +7,7 @@
 return {
 
   -- disable mini.bufremove
-  { "echasnovski/mini.bufremove", enabled = false },
+  { "nvim-mini/mini.bufremove", enabled = false },
 
   -- use bdelete instead
   {
