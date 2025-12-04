@@ -23,6 +23,7 @@ return {
   },
   config = function()
     require("codecompanion").setup({
+      ignore_warnings = true,
       adapters = {
         gemini = function()
           return require("codecompanion.adapters").extend("gemini", {
@@ -174,4 +175,5 @@ return {
       },
     })
   end,
+  ignore_warnings = true,
 }
