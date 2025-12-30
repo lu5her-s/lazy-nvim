@@ -80,4 +80,4 @@ vim.g.mcphub_auto_approve = true
 vim.g.codecompanion_auto_tool_mode = true
 
 -- enable transparent background
-vim.g.transparent_enabled = true
+-- vim.g.transparent_enabled = true
