@@ -50,7 +50,7 @@ return {
           })
         end,
         g4f = function()
-          return require("codecompanion.adapters").extend("openai", {
+          return require("codecompanion.adapters").extend("openai_compatible", {
             url = "http://localhost:8080/v1/chat/completions",
             schema = {
               model = {
