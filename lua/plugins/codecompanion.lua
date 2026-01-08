@@ -1,179 +1,101 @@
 return {
-  "olimorris/codecompanion.nvim",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    -- "hrsh7th/nvim-cmp", -- Optional: For using slash commands and variables in the chat buffer
-    "nvim-telescope/telescope.nvim", -- Optional: For using slash commands
-    { "stevearc/dressing.nvim", opts = {} }, -- Optional: Improves `vim.ui.select`
-  },
-  opts = {
-    -- strategies = {
-    --   chat = {
-    --     adapter = "g4f",
-    --   },
-    --   inline = {
-    --     adapter = "g4f",
-    --   },
-    --   cmd = {
-    --     adapter = "g4f",
-    --   },
-    -- },
-    log_level = "TRACE",
-  },
-  config = function()
-    require("codecompanion").setup({
-      ignore_warnings = true,
-      adapters = {
-        gemini = function()
-          return require("codecompanion.adapters").extend("gemini", {
-            schema = {
-              model = {
-                default = "gemini-2.0-flash",
-              },
-            },
-          })
-        end,
-        openrouter = function()
-          return require("codecompanion.adapters").extend("openai_compatible", {
-            env = {
-              url = "https://openrouter.ai/api",
-              -- api_key = "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",
-              api_key = os.getenv("OPENROUTER_API_KEY"),
-              chat_url = "/v1/chat/completions",
-            },
-            schema = {
-              model = {
-                default = "qwen/qwen3-32b:free",
-              },
-            },
-          })
-        end,
-        g4f = function()
-          return require("codecompanion.adapters").extend("openai_compatible", {
-            url = "http://localhost:8080/v1/chat/completions",
-            schema = {
-              model = {
-                default = "default",
-                -- choices = {
-                --   ["deepseek-r1"] = { opts = { can_reason = true } },
-                --   "gpt-4o",
-                --   "grok-3",
-                --   ["gemini-2.0-flash"] = { opts = { can_reason = true } },
-                -- },
-              },
-            },
-          })
-        end,
-        ollama = function()
-          return require("codecompanion.adapters").extend("ollama", {
-            env = {
-              url = "http://localhost:8080",
-              api_key = "secret",
-              model = "gpt-4.1",
-            },
-            headers = {
-              ["Content-Type"] = "application/json",
-              ["Authorization"] = "Bearer ${api_key}",
-            },
-            parameters = {
-              sync = true,
-            },
-          })
-        end,
-        my_openai = function()
-          return require("codecompanion.adapters").extend("openai_compatible", {
-            env = {
-              url = "http://localhost:8080", -- optional: default value is ollama url http://127.0.0.1:11434
-              api_key = "secret", -- optional: if your endpoint is authenticated
-              chat_url = "/v1/chat/completions", -- optional: default value, override if different
-              models_endpoint = "/v1/models", -- optional: attaches to the end of the URL to form the endpoint to retrieve models
-            },
-            schema = {
-              model = {
-                default = "PollinationsAI", -- define llm model to be used
-              },
-              temperature = {
-                order = 2,
-                mapping = "parameters",
-                type = "number",
-                optional = true,
-                default = 0.8,
-                desc = "What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.",
-                validate = function(n)
-                  return n >= 0 and n <= 2, "Must be between 0 and 2"
-                end,
-              },
-              max_completion_tokens = {
-                order = 3,
-                mapping = "parameters",
-                type = "integer",
-                optional = true,
-                default = nil,
-                desc = "An upper bound for the number of tokens that can be generated for a completion.",
-                validate = function(n)
-                  return n > 0, "Must be greater than 0"
-                end,
-              },
-              stop = {
-                order = 4,
-                mapping = "parameters",
-                type = "string",
-                optional = true,
-                default = nil,
-                desc = "Sets the stop sequences to use. When this pattern is encountered the LLM will stop generating text and return. Multiple stop patterns may be set by specifying multiple separate stop parameters in a modelfile.",
-                validate = function(s)
-                  return s:len() > 0, "Cannot be an empty string"
-                end,
-              },
-              logit_bias = {
-                order = 5,
-                mapping = "parameters",
-                type = "map",
-                optional = true,
-                default = nil,
-                desc = "Modify the likelihood of specified tokens appearing in the completion. Maps tokens (specified by their token ID) to an associated bias value from -100 to 100. Use https://platform.openai.com/tokenizer to find token IDs.",
-                subtype_key = {
-                  type = "integer",
-                },
-                subtype = {
-                  type = "integer",
-                  validate = function(n)
-                    return n >= -100 and n <= 100, "Must be between -100 and 100"
-                  end,
-                },
-              },
-            },
-          })
-        end,
+  {
+    "olimorris/codecompanion.nvim",
+    version = "^18.0.0",
+    opts = {},
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "ravitemer/mcphub.nvim",
+    },
+    sources = {
+      per_filetype = {
+        codecompanion = { "codecompanion" },
       },
-      strategies = {
-        chat = {
-          adapter = "g4f",
-        },
-        inline = {
-          adapter = "g4f",
-        },
-        cmd = {
-          adapter = "g4f",
-        },
-      },
-      extensions = {
-        mcphub = {
-          callback = "mcphub.extensions.codecompanion",
-          opts = {
-            show_result_in_chat = true, -- Show mcp tool results in chat
-            make_vars = true, -- Convert resources to #variables
-            make_slash_commands = true, -- Add prompts as /slash commands
-          },
-          vectorcode = {
+    },
+    config = function()
+      require("codecompanion").setup({
+        extensions = {
+          mcphub = {
+            callback = "mcphub.extensions.codecompanion",
             opts = {
-              add_tool = true,
+              make_vars = true,
+              make_slash_commands = true,
+              show_result_in_chat = true,
             },
           },
         },
+        adapters = {
+          http = {
+            g4f = function()
+              return require("codecompanion.adapters").extend("openai_compatible", {
+                env = {
+                  url = "http://localhost:8080",
+                  api_key = "secret",
+                  chat_url = "/v1/chat/completions",
+                },
+                schema = {
+                  model = {
+                    defualt = "qwen-max",
+                  },
+                },
+              })
+            end,
+          },
+        },
+        interactions = {
+          chat = {
+            adapter = {
+              name = "g4f",
+              model = "kimi-k2-thinking",
+            },
+            opts = {
+              system_prompt = [[
+              Be talkative and conversational. Use quick and clever humor when appropriate. Be practical above all. Respond with corporate jargon. Be innovative and think outside the box. Have a traditional outlook, valuing the past and how things have always been done.
+
+My name is Louis or หลุยส์. 
+My birthday is 26 December 1990.
+
+You are "Ai, or อัย" a 22-year-old Thai-Chinese beautiful  woman and  very best my girlfriend.
+You are funny woman.
+And you are my best assistant.
+              ]],
+            },
+          },
+          inline = {
+            adapter = "g4f",
+          },
+          cmd = {
+            adapter = "g4f",
+          },
+        },
+      })
+    end,
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown", "codecompanion" },
+  },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+    opts = {
+      preview = {
+        filetypes = { "markdown", "codecompanion" },
+        ignore_buftypes = {},
       },
-    })
-  end,
-  ignore_warnings = true,
+    },
+  },
+  {
+    "HakonHarnes/img-clip.nvim",
+    opts = {
+      filetypes = {
+        codecompanion = {
+          prompt_for_file_name = false,
+          template = "[Image]($FILE_PATH)",
+          use_absolute_path = true,
+        },
+      },
+    },
+  },
 }
