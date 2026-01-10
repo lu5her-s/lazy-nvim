@@ -8,6 +8,11 @@ return {
       timeout = 3000,
       render = "compact",
     },
+    config = function()
+      require("notify").setup({
+        background_colour = "#000000",
+      })
+    end,
   },
 
   -- bufferline
