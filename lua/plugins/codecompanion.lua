@@ -36,7 +36,7 @@ return {
                 },
                 schema = {
                   model = {
-                    defualt = "qwen-max",
+                    defualt = "minimax-m2",
                   },
                 },
               })
