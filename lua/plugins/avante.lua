@@ -81,7 +81,7 @@ return {
           __inherited_from = "openai",
           api_key = "secret",
           endpoint = "http://localhost:8080/v1",
-          model = "llama-4-maverick",
+          model = "kimi-k2-thinking",
         },
       },
     })
