@@ -132,7 +132,7 @@ return {
                 },
                 schema = {
                   model = {
-                    defualt = "minimax-m2",
+                    defualt = "default",
                   },
                 },
               })
@@ -143,7 +143,7 @@ return {
           chat = {
             adapter = {
               name = "g4f",
-              model = "kimi-k2-thinking",
+              model = "default",
             },
             opts = {
               system_prompt = [[
@@ -161,7 +161,7 @@ And you are my best assistant.
           inline = {
             adapter = {
               name = "g4f",
-              model = "minimax-m2.1",
+              model = "default",
             },
           },
           cmd = {
