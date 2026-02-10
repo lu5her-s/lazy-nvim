@@ -132,10 +132,19 @@ return {
   end,
 
   -- scrollbar for Neovim
+  -- {
+  --   "dstein64/nvim-scrollview",
+  --   event = "BufReadPre",
+  --   config = {
+  --     excluded_filetypes = { "alpha", "neo-tree" },
+  --     current_only = true,
+  --     winblend = 75,
+  --   },
+  -- },
   {
     "dstein64/nvim-scrollview",
     event = "BufReadPre",
-    config = {
+    opts = {
       excluded_filetypes = { "alpha", "neo-tree" },
       current_only = true,
       winblend = 75,
