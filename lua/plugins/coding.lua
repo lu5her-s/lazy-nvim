@@ -70,6 +70,8 @@ return {
         "sql",
         "vim",
         "yaml",
+        "json",
+        "jsonc",
       },
     },
   },
