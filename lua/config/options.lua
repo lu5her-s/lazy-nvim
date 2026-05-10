@@ -83,3 +83,5 @@ vim.g.codecompanion_auto_tool_mode = true
 
 -- enable transparent background
 -- vim.g.transparent_enabled = true
+
+vim.opt.clipboard = "unnamedplus"

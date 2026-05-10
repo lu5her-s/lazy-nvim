@@ -144,3 +144,7 @@ wk.add({
     desc = "Create code screenshot",
   },
 })
+
+-- set Ctrl + Shift + C and V to copy and paste
+vim.api.nvim_set_keymap("v", "<C-S-c>", '"+y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<C-S-v>", '"+p', { noremap = true, silent = true })
