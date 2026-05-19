@@ -83,6 +83,12 @@ return {
           endpoint = "http://localhost:8080/v1",
           model = "default",
         },
+        sml = {
+          __inherited_from = "openai",
+          api_key = "sml_live__eE7jUeCuB9EAbWRHB3OPk0rSeNEoJNb",
+          endpoint = "http://localhost:3334/v1",
+          model = "sml/tools",
+        },
       },
     })
   end,
