@@ -97,13 +97,14 @@ return {
             g4f = function()
               return require("codecompanion.adapters").extend("openai_compatible", {
                 env = {
-                  url = "http://localhost:3334",
-                  api_key = "sml_live__eE7jUeCuB9EAbWRHB3OPk0rSeNEoJNb",
+                  url = "http://localhost:8080",
+                  -- api_key = "sml_live__eE7jUeCuB9EAbWRHB3OPk0rSeNEoJNb",
+                  api_key = "secret",
                   chat_url = "/v1/chat/completions",
                 },
                 schema = {
                   model = {
-                    defualt = "sml/auto",
+                    defualt = "default",
                   },
                 },
               })
@@ -114,7 +115,7 @@ return {
           chat = {
             adapter = {
               name = "g4f",
-              model = "sml/auto",
+              model = "deafult",
             },
             opts = {
               system_prompt = [[
@@ -146,7 +147,7 @@ return {
           inline = {
             adapter = {
               name = "g4f",
-              model = "sml/auto",
+              model = "openai",
             },
           },
           cmd = {
