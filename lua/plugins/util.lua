@@ -42,4 +42,22 @@ return {
   {
     "mechatroner/rainbow_csv",
   },
+
+  -- nvim-web-devicons
+  {
+    "nvim-tree/nvim-web-devicons",
+    opts = {},
+  },
+
+  require("fzf-lua").setup({
+    previewer = "builtin",
+    winopts = {
+      preview = {
+        vertical = "up:45%",
+        horizontal = "right:50%",
+        layout = "horizontal",
+        fallback = "chafa", -- or 'viu'
+      },
+    },
+  }),
 }
