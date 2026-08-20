@@ -79,9 +79,9 @@ return {
       providers = {
         g4f = {
           __inherited_from = "openai",
-          api_key = "secret",
-          endpoint = "http://localhost:8080/v1",
-          model = "default",
+          api_key = "sk-221ab9fbd2be7f4a-m0jdkr-53eb6985",
+          endpoint = "http://localhost:20128/v1",
+          model = "nvidia/minimaxai/minimax-m3",
         },
         sml = {
           __inherited_from = "openai",
