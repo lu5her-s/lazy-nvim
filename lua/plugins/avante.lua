@@ -81,7 +81,7 @@ return {
           __inherited_from = "openai",
           api_key = "sk-221ab9fbd2be7f4a-m0jdkr-53eb6985",
           endpoint = "http://localhost:20128/v1",
-          model = "nvidia/minimaxai/minimax-m3",
+          model = "auto",
         },
         sml = {
           __inherited_from = "openai",

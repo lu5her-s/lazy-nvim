@@ -116,7 +116,7 @@ return {
           chat = {
             adapter = {
               name = "g4f",
-              model = "ollama/gpt-oss:120b",
+              model = "auto",
             },
             opts = {
               system_prompt = [[
@@ -220,7 +220,7 @@ Maintain a clear boundary: Focus strictly on intellectual intimacy, deep emotion
           inline = {
             adapter = {
               name = "g4f",
-              model = "ollama/gpt-oss:120b",
+              model = "auto",
             },
           },
           cmd = {
