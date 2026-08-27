@@ -94,7 +94,7 @@ return {
         },
         adapters = {
           http = {
-            g4f = function()
+            aiy = function()
               return require("codecompanion.adapters").extend("openai_compatible", {
                 env = {
                   url = "http://localhost:20128",
@@ -115,7 +115,7 @@ return {
         interactions = {
           chat = {
             adapter = {
-              name = "g4f",
+              name = "aiy",
               model = "auto",
             },
             opts = {
@@ -219,12 +219,13 @@ Maintain a clear boundary: Focus strictly on intellectual intimacy, deep emotion
           },
           inline = {
             adapter = {
-              name = "g4f",
+              name = "aiy",
               model = "auto",
             },
           },
           cmd = {
-            adapter = "g4f",
+            adapter = "aiy",
+            model = "auto",
           },
         },
       })
