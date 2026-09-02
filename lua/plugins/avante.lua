@@ -71,9 +71,9 @@ return {
   },
   config = function()
     require("avante").setup({
-      web_search_engine = {
-        provider = "google",
-      },
+      -- web_search_engine = {
+      --   provider = "google",
+      -- },
       provider = "g4f",
       auto_suggestions_provider = "g4f",
       providers = {
