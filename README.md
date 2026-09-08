@@ -91,6 +91,10 @@ Leader key is `\`.
 | `<leader>fp` | Find project |
 | `<leader>ti` | Telescope import |
 | `<leader>cx` | Code screenshots (silicon) |
+| `ys<motion>"` | Surround a motion with `"` (e.g. `ysiw"`) |
+| `S"` | Surround visual selection (visual mode) |
+| `ds"` | Delete surrounding `"` |
+| `cs"'` | Change surrounding `"` to `'` |
 | `<leader>bd` / `<leader>bD` | Delete buffer / force |
 | `<leader>gg` | gitui (floating) |
 
@@ -106,6 +110,7 @@ Leader key is `\`.
 - [markview.nvim](https://github.com/OXY2DEV/markview.nvim) — markdown rendering
 - [codeium.vim](https://github.com/Exafunction/codeium.vim) — AI completions (`<C-g>` accept)
 - [diffview.nvim](https://github.com/sindrets/diffview.nvim) — git diffs
+- [nvim-surround](https://github.com/kylechui/nvim-surround) — add/delete/change surrounding delimiters
 
 ## Enabled LazyVim extras
 

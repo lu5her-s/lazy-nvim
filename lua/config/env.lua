@@ -5,6 +5,5 @@
 local M = {}
 
 M.aiy_api_key = os.getenv("AIY_API_KEY") or "secret"
-M.sml_api_key = os.getenv("SML_API_KEY") or "secret"
 
 return M

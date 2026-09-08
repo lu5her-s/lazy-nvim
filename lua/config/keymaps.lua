@@ -87,6 +87,7 @@ end, { expr = true, desc = "Accept Codeium suggestion" })
 -- ---------------------------------------------------------------------------
 vim.keymap.set("n", "<LocalLeader>[", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "Toggle CodeCompanion Chat" })
 vim.keymap.set("v", "<LocalLeader>[", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "Toggle CodeCompanion Chat" })
+vim.keymap.set("n", "<LocalLeader>a", "<cmd>CodeCompanionActions<cr>", { desc = "CodeCompanion Actions" })
 
 -- ---------------------------------------------------------------------------
 -- Clipboard
