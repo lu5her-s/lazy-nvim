@@ -44,8 +44,9 @@ return {
   -- treesitter
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
+    opts = function(_, opts)
+      -- generic parsers only; language parsers live in lua/plugins/lang/*.lua
+      vim.list_extend(opts.ensure_installed, {
         "bash",
         "comment",
         "diff",
@@ -62,17 +63,11 @@ return {
         "julia",
         "lua",
         "make",
-        "markdown",
-        "markdown_inline",
-        "mermaid",
-        "python",
         "regex",
         "sql",
         "vim",
         "yaml",
-        "json",
-        "jsonc",
-      },
-    },
+      })
+    end,
   },
 }

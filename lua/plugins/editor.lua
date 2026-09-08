@@ -4,6 +4,8 @@
 -- * add extra plugins
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
+local user = require("config.user")
+
 return {
 
   -- disable mini.bufremove
@@ -50,34 +52,6 @@ return {
         -- time the current file is changed while the tree is open.
         group_empty_dirs = true, -- when true, empty folders will be grouped together
         hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
-        commands = {
-          avante_add_files = function(state)
-            local node = state.tree:get_node()
-            local filepath = node:get_id()
-            local relative_path = require("avante.utils").relative_path(filepath)
-
-            local sidebar = require("avante").get()
-
-            local open = sidebar:is_open()
-            -- ensure avante sidebar is open
-            if not open then
-              require("avante.api").ask()
-              sidebar = require("avante").get()
-            end
-
-            sidebar.file_selector:add_selected_file(relative_path)
-
-            -- remove neo tree buffer
-            if not open then
-              sidebar.file_selector:remove_selected_file("neo-tree filesystem [1]")
-            end
-          end,
-        },
-        window = {
-          mappings = {
-            ["oa"] = "avante_add_files",
-          },
-        },
       },
       git_status = {
         window = {
@@ -104,40 +78,6 @@ return {
         },
       },
     },
-    -- config = function()
-    --   require("neo-tree").setup({
-    --     filesystem = {
-    --       commands = {
-    --         avante_add_files = function(state)
-    --           local node = state.tree:get_node()
-    --           local filepath = node:get_id()
-    --           local relative_path = require("avante.utils").relative_path(filepath)
-    --
-    --           local sidebar = require("avante").get()
-    --
-    --           local open = sidebar:is_open()
-    --           -- ensure avante sidebar is open
-    --           if not open then
-    --             require("avante.api").ask()
-    --             sidebar = require("avante").get()
-    --           end
-    --
-    --           sidebar.file_selector:add_selected_file(relative_path)
-    --
-    --           -- remove neo tree buffer
-    --           if not open then
-    --             sidebar.file_selector:remove_selected_file("neo-tree filesystem [1]")
-    --           end
-    --         end,
-    --       },
-    --       window = {
-    --         mappings = {
-    --           ["oa"] = "avante_add_files",
-    --         },
-    --       },
-    --     },
-    --   })
-    -- end,
   },
 
   -- customize telescope
@@ -148,9 +88,6 @@ return {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       { "nvim-telescope/telescope-project.nvim" },
       { "debugloop/telescope-undo.nvim" },
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-tree/nvim-web-devicons" },
-      { "MunifTanjim/nui.nvim" },
     },
     opts = {
       defaults = {
@@ -200,7 +137,7 @@ return {
       extensions = {
         project = {
           base_dirs = {
-            "~/01-Projects/",
+            user.projects_dir,
           },
         },
         undo = {
@@ -238,12 +175,6 @@ return {
   -- which-key extensions
   {
     "folke/which-key.nvim",
-    -- opts = function()
-    --   require("which-key").register({
-    --     ["<leader>d"] = { name = "+debug", mode = { "n", "v" } },
-    --     ["<leader>ct"] = { name = "+test" },
-    --   })
-    -- end,
     keys = {
       { "<leader>ct", group = "test" },
       { "<leader>d", group = "debug", mode = { "n", "v" } },

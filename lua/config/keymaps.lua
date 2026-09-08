@@ -1,22 +1,27 @@
---[[--
+--[[-- ------------------------------------------------------------------
 File              : keymaps.lua
 Author            : lu5her <lu5her@mail>
 Date              : Tue Jan, 23 2024, 14:03 023
 Last Modified Date: Wed Dec, 04 2024, 11:28 339
 Last Modified By  : lu5her <lu5her@mail>
---]]
+--]] --------------------------------------------------------------------
 --
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- ---------------------------------------------------------------------------
+-- General
+-- ---------------------------------------------------------------------------
 vim.keymap.set("n", "<F2>", ":e<cr>")
-vim.keymap.set("n", "zz", "i<c-m><esc>")
-vim.keymap.set("n", "<c-l>", ":noh <cr>")
+vim.keymap.set("n", "<c-l>", ":noh <cr>", { desc = "Clear search highlight" })
 vim.keymap.set("n", "<leader>fd", ":TodoTelescope<cr>", { desc = "Todo Telescope" })
+vim.keymap.set("n", "<leader>dj", ":!djlint % --reformat<CR>", { desc = "Reformat with djlint" })
 
+-- ---------------------------------------------------------------------------
+-- Git (gitui instead of lazygit)
+-- ---------------------------------------------------------------------------
 if vim.fn.executable("gitui") == 1 then
-  -- gitui instead of lazygit
   vim.keymap.set("n", "<leader>gg", function()
     require("lazyvim.util").float_term({ "gitui" })
   end, { desc = "gitui (cwd)" })
@@ -25,99 +30,73 @@ if vim.fn.executable("gitui") == 1 then
   end, { desc = "gitui (root dir)" })
 end
 
+-- ---------------------------------------------------------------------------
+-- System monitor
+-- ---------------------------------------------------------------------------
 if vim.fn.executable("btop") == 1 then
-  -- btop
   vim.keymap.set("n", "<leader>xb", function()
     require("lazyvim.util").float_term({ "btop" })
   end, { desc = "btop" })
 end
 
+-- ---------------------------------------------------------------------------
+-- Trouble
+-- ---------------------------------------------------------------------------
 vim.keymap.set("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { desc = "Open Location List (Trouble)" })
 vim.keymap.set("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { desc = "Open Quickfix List (Trouble)" })
 
-local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap("n", "<Leader>nf", ":lua require('neogen').generate()<CR>", opts)
--- vim.api.nvim_set_keymap("n", "<Leader>nc", ":lua require('neogen').generate({ type = 'class' })<CR>", opts)
--- vim.api.nvim_set_keymap("n", "<Leader>nt", ":lua require('neogen').generate({ type = 'type' })<CR>", opts)
+-- ---------------------------------------------------------------------------
+-- Neogen (annotations)
+-- ---------------------------------------------------------------------------
+vim.keymap.set("n", "<Leader>nf", function()
+  require("neogen").generate()
+end, { desc = "Generate annotations" })
 
--- keymap for external command djlint % --reformat
-vim.keymap.set("n", "<leader>dj", ":!djlint % --reformat<CR>")
-
+-- ---------------------------------------------------------------------------
 -- BufferLine
-vim.keymap.set(
-  "n",
-  "<Tab>",
-  ":BufferLineCycleNext<CR>",
-  { noremap = true, silent = true, remap = true, desc = "BufferLineCycleNext" }
-)
-vim.keymap.set(
-  "n",
-  "<S-Tab>",
-  ":BufferLineCyclePrev<CR>",
-  { noremap = true, silent = true, remap = true, desc = "BufferLineCyclePrev" }
-)
+-- ---------------------------------------------------------------------------
+vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
 
--- for chatgpt
+-- ---------------------------------------------------------------------------
+-- Insert-mode quick movements (ported from autoclose.vim)
+-- ---------------------------------------------------------------------------
+vim.keymap.set({ "i", "c" }, "\\h", "<Left>", { desc = "Move left" })
+vim.keymap.set({ "i", "c" }, "\\j", "<Down>", { desc = "Move down" })
+vim.keymap.set({ "i", "c" }, "\\k", "<Up>", { desc = "Move up" })
+vim.keymap.set({ "i", "c" }, "\\l", "<Right>", { desc = "Move right" })
+vim.keymap.set({ "i", "c" }, "\\A", "<Esc>A", { desc = "Append at end of line" })
+vim.keymap.set({ "i", "c" }, "\\a", "<Esc>a", { desc = "Append after cursor" })
+vim.keymap.set({ "i", "c" }, "\\O", "<Esc>O", { desc = "New line above" })
+vim.keymap.set({ "i", "c" }, "\\o", "<Esc>o", { desc = "New line below" })
 
--- load Which-key
-require("which-key").setup()
-
--- keymap for Telescope import
+-- ---------------------------------------------------------------------------
+-- Telescope
+-- ---------------------------------------------------------------------------
 vim.keymap.set("n", "<leader>ti", "<cmd>Telescope import<cr>", { desc = "Telescope import" })
 
--- keymap for codeium
+-- ---------------------------------------------------------------------------
+-- Codeium
+-- ---------------------------------------------------------------------------
 vim.keymap.set("i", "<c-;>", function()
   return vim.fn["codeium#Accept"]()
-end, { expr = true })
+end, { expr = true, desc = "Accept Codeium suggestion" })
 
--- Generate image of lines in a visual selection
--- vim.keymap.set("v", "<Leader>cxs", function()
---   require("nvim-silicon").shoot()
--- end, { desc = "Generate code screenshot" })
--- -- Generate image of a whole buffer, with lines in a visual selection highlighted
--- vim.keymap.set("v", "<Leader>cxbs", function()
---   require("nvim-silicon").file()
--- end, { desc = "Generate code screenshot as file" })
--- -- Generate visible portion of a buffer
--- vim.keymap.set("n", "<Leader>cxs", function()
---   require("nvim-silicon").clip()
--- end, { desc = "Generate code screenshot to clipboard" })
+-- ---------------------------------------------------------------------------
+-- CodeCompanion
+-- ---------------------------------------------------------------------------
+vim.keymap.set("n", "<LocalLeader>[", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "Toggle CodeCompanion Chat" })
+vim.keymap.set("v", "<LocalLeader>[", "<cmd>CodeCompanionChat Toggle<cr>", { desc = "Toggle CodeCompanion Chat" })
 
--- -- Generate image of lines in a visual selection
--- vim.keymap.set("v", "<Leader>cxs", function()
---   silicon.visualise_api()
--- end)
--- -- Generate image of a whole buffer, with lines in a visual selection highlighted
--- vim.keymap.set("v", "<Leader>cxbs", function()
---   silicon.visualise_api({ to_clip = true, show_buf = true })
--- end)
--- -- Generate visible portion of a buffer
--- vim.keymap.set("n", "<Leader>cxs", function()
---   silicon.visualise_api({ to_clip = true, visible = true })
--- end)
--- -- Generate current buffer line in normal mode
--- vim.keymap.set("n", "<Leader>cxs", function()
---   silicon.visualise_api({ to_clip = true })
--- end)
+-- ---------------------------------------------------------------------------
+-- Clipboard
+-- ---------------------------------------------------------------------------
+vim.keymap.set("v", "<C-S-c>", '"+y', { desc = "Copy to system clipboard" })
+vim.keymap.set("v", "<C-S-v>", '"+p', { desc = "Paste from system clipboard" })
 
--- set keymap for lorem.nvim in mode n,i if i mode set esc to n mode
--- vim.keymap.set("n", "<Leader>r", ":LoremIpsum ", { desc = "Lorem" })
-
--- key for codecompanion
-vim.api.nvim_set_keymap("n", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<LocalLeader>[", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<LocalLeader>[", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
---
--- -- Expand 'cc' into 'CodeCompanion' in the command line
--- vim.cmd([[cab cc CodeCompanion]])
-
--- set F5 to :AWStart and F6 to :AWStatus
--- vim.api.nvim_set_keymap("n", "<F5>", ":AWStart<cr>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<F6>", ":AWStatus<cr>", { noremap = true, silent = true })
-
--- key for silicon
+-- ---------------------------------------------------------------------------
+-- Silicon (code screenshots)
+-- ---------------------------------------------------------------------------
 local wk = require("which-key")
 wk.add({
   mode = { "v", "n" },
@@ -144,7 +123,3 @@ wk.add({
     desc = "Create code screenshot",
   },
 })
-
--- set Ctrl + Shift + C and V to copy and paste
-vim.api.nvim_set_keymap("v", "<C-S-c>", '"+y', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<C-S-v>", '"+p', { noremap = true, silent = true })
