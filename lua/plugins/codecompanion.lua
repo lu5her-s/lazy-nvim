@@ -93,7 +93,7 @@ return {
               return require("codecompanion.adapters").extend("openai_compatible", {
                 env = {
                   url = "http://localhost:20128",
-                  api_key = env.aiy_api_key,
+                  api_key = env.omniroute_api_key,
                   chat_url = "/v1/chat/completions",
                 },
                 schema = {

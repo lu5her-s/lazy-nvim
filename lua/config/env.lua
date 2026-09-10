@@ -4,6 +4,6 @@
 --   export SML_API_KEY="sml_live__..."
 local M = {}
 
-M.aiy_api_key = os.getenv("AIY_API_KEY") or "secret"
+M.omniroute_api_key = os.getenv("OMNIROUTE_API_KEY") or "secret"
 
 return M
